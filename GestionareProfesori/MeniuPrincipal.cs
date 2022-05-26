@@ -15,6 +15,8 @@ namespace GestionareProfesori
     
     public partial class MeniuPrincipal : Form
     {
+        private bool addApasat = false;
+        private bool modificatApasat = false;
         private const bool SUCCES = true;
 
         IStocareLicee stocareLicee = (IStocareLicee)new StocareFactory().GetTipStocare(typeof(Liceu));
@@ -22,10 +24,6 @@ namespace GestionareProfesori
         IStocareOrase stocareOrase = (IStocareOrase)new StocareFactory().GetTipStocare(typeof(Oras));
         IStocareProfesori stocareProfesori = (IStocareProfesori)new StocareFactory().GetTipStocare(typeof(Profesor));
         IStocareRepartizari stocareRepartizari = (IStocareRepartizari)new StocareFactory().GetTipStocare(typeof(Repartizare));
-
-
-        bool addApasat = false;
-        bool modificatApasat = false;
 
         public MeniuPrincipal()
         {

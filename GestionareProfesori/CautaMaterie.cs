@@ -17,6 +17,7 @@ namespace GestionareProfesori
     {
         private const int PRIMA_COLOANA = 0;
         private const bool SUCCES = true;
+        private const bool adOrModif = false;
 
         IStocareLicee stocareLicee = (IStocareLicee)new StocareFactory().GetTipStocare(typeof(Liceu));
         IStocareMaterie stocareMaterii = (IStocareMaterie)new StocareFactory().GetTipStocare(typeof(Materie));
@@ -30,25 +31,6 @@ namespace GestionareProfesori
             AfisareMaterii();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                var materie = stocareMaterii.GetMaterii();
-                if (materie != null && materie.Any())
-                {
-                    dataGridView1.DataSource = materie.Select(m => new { m.idMaterie, m.nume}).ToList();
-
-                    dataGridView1.Columns["idMaterie"].Visible = false;
-                    dataGridView1.Columns["nume"].HeaderText = "Materie";
-                    
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
-        }
 
         #region FUNCTII
         private void AfisareMaterii()
@@ -71,5 +53,34 @@ namespace GestionareProfesori
             }
         }
         #endregion
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.Hide();
+            MeniuMaterie meniuMaterie = new MeniuMaterie(adOrModif);
+            meniuMaterie.ShowDialog();
+            this.Show();
+        }
+
+        private int getIdDataGrid()
+        {
+            try
+            {
+                var currentCell = dataGridView1.CurrentCell;
+                if (currentCell == null)
+                {
+                    MessageBox.Show("Selectati un profesor din tabel");
+                    return 0;
+                }
+
+                int idStudent = Convert.ToInt32(dataGridView1[PRIMA_COLOANA, currentCell.RowIndex].Value);
+                return idStudent;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

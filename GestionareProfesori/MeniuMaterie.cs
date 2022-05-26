@@ -23,7 +23,7 @@ namespace GestionareProfesori
         IStocareProfesori stocareProfesori = (IStocareProfesori)new StocareFactory().GetTipStocare(typeof(Profesor));
         IStocareRepartizari stocareRepartizari = (IStocareRepartizari)new StocareFactory().GetTipStocare(typeof(Repartizare));
 
-        public MeniuMaterie()
+        public MeniuMaterie(bool adOrModif)
         {
             InitializeComponent();
             if (stocareMaterii == null)

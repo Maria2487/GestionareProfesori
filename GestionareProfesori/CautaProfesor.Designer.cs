@@ -34,10 +34,10 @@
             this.txtNume = new System.Windows.Forms.TextBox();
             this.comboBoxLiceu = new System.Windows.Forms.ComboBox();
             this.comboBoxOras = new System.Windows.Forms.ComboBox();
-            this.dataGridViewPersoana = new System.Windows.Forms.DataGridView();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.lblOras = new System.Windows.Forms.Label();
             this.lblLiceu = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPersoana)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblPrenume
@@ -88,13 +88,14 @@
             this.comboBoxOras.Size = new System.Drawing.Size(154, 21);
             this.comboBoxOras.TabIndex = 7;
             // 
-            // dataGridViewPersoana
+            // dataGridView1
             // 
-            this.dataGridViewPersoana.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewPersoana.Location = new System.Drawing.Point(15, 247);
-            this.dataGridViewPersoana.Name = "dataGridViewPersoana";
-            this.dataGridViewPersoana.Size = new System.Drawing.Size(773, 191);
-            this.dataGridViewPersoana.TabIndex = 13;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(15, 247);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(773, 191);
+            this.dataGridView1.TabIndex = 13;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // lblOras
             // 
@@ -121,7 +122,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.lblLiceu);
             this.Controls.Add(this.lblOras);
-            this.Controls.Add(this.dataGridViewPersoana);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.lblPrenume);
             this.Controls.Add(this.lblNume);
             this.Controls.Add(this.txtPrenume);
@@ -130,7 +131,7 @@
             this.Controls.Add(this.comboBoxOras);
             this.Name = "CautaProfesor";
             this.Text = "CautaPersoana";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPersoana)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -144,7 +145,7 @@
         private System.Windows.Forms.TextBox txtNume;
         private System.Windows.Forms.ComboBox comboBoxLiceu;
         private System.Windows.Forms.ComboBox comboBoxOras;
-        private System.Windows.Forms.DataGridView dataGridViewPersoana;
+        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label lblOras;
         private System.Windows.Forms.Label lblLiceu;
     }

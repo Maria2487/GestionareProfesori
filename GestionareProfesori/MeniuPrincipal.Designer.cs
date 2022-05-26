@@ -30,6 +30,7 @@
         {
             this.PanelPrincipalUp = new System.Windows.Forms.Panel();
             this.PanelPrincipalLeft = new System.Windows.Forms.Panel();
+            this.buttonInformatii = new System.Windows.Forms.Button();
             this.buttonModifica = new System.Windows.Forms.Button();
             this.buttonAdauga = new System.Windows.Forms.Button();
             this.PanelPrincipalCenter = new System.Windows.Forms.Panel();
@@ -38,7 +39,6 @@
             this.buttonMaterie = new System.Windows.Forms.Button();
             this.buttonPersoana = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.buttonInformatii = new System.Windows.Forms.Button();
             this.PanelPrincipalLeft.SuspendLayout();
             this.PanelPrincipalCenter.SuspendLayout();
             this.panelAdauga.SuspendLayout();
@@ -60,6 +60,15 @@
             this.PanelPrincipalLeft.Name = "PanelPrincipalLeft";
             this.PanelPrincipalLeft.Size = new System.Drawing.Size(213, 380);
             this.PanelPrincipalLeft.TabIndex = 1;
+            // 
+            // buttonInformatii
+            // 
+            this.buttonInformatii.Location = new System.Drawing.Point(13, 174);
+            this.buttonInformatii.Name = "buttonInformatii";
+            this.buttonInformatii.Size = new System.Drawing.Size(183, 53);
+            this.buttonInformatii.TabIndex = 2;
+            this.buttonInformatii.Text = "Cautati informatii?";
+            this.buttonInformatii.UseVisualStyleBackColor = true;
             // 
             // buttonModifica
             // 
@@ -125,18 +134,9 @@
             this.buttonPersoana.Name = "buttonPersoana";
             this.buttonPersoana.Size = new System.Drawing.Size(75, 23);
             this.buttonPersoana.TabIndex = 0;
-            this.buttonPersoana.Text = "Persoana?";
+            this.buttonPersoana.Text = "Profesor?";
             this.buttonPersoana.UseVisualStyleBackColor = true;
             this.buttonPersoana.Click += new System.EventHandler(this.buttonPersoana_Click);
-            // 
-            // buttonInformatii
-            // 
-            this.buttonInformatii.Location = new System.Drawing.Point(13, 174);
-            this.buttonInformatii.Name = "buttonInformatii";
-            this.buttonInformatii.Size = new System.Drawing.Size(183, 53);
-            this.buttonInformatii.TabIndex = 2;
-            this.buttonInformatii.Text = "Cautati informatii?";
-            this.buttonInformatii.UseVisualStyleBackColor = true;
             // 
             // MeniuPrincipal
             // 
