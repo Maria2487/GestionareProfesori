@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,14 +47,73 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="CautaLiceu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="CautaLiceu.Designer.cs">
+      <DependentUpon>CautaLiceu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CautaMaterie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CautaMaterie.Designer.cs">
+      <DependentUpon>CautaMaterie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CautaProfesor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CautaProfesor.Designer.cs">
+      <DependentUpon>CautaProfesor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MeniuLiceu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MeniuLiceu.Designer.cs">
+      <DependentUpon>MeniuLiceu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MeniuMaterie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MeniuMaterie.Designer.cs">
+      <DependentUpon>MeniuMaterie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MeniuProfesor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MeniuProfesor.Designer.cs">
+      <DependentUpon>MeniuProfesor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MeniuPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MeniuPrincipal.Designer.cs">
+      <DependentUpon>MeniuPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShortHelp.cs" />
+    <Compile Include="StocareFactory.cs" />
+    <EmbeddedResource Include="CautaLiceu.resx">
+      <DependentUpon>CautaLiceu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CautaMaterie.resx">
+      <DependentUpon>CautaMaterie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CautaProfesor.resx">
+      <DependentUpon>CautaProfesor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MeniuLiceu.resx">
+      <DependentUpon>MeniuLiceu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MeniuMaterie.resx">
+      <DependentUpon>MeniuMaterie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MeniuProfesor.resx">
+      <DependentUpon>MeniuProfesor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MeniuPrincipal.resx">
+      <DependentUpon>MeniuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -75,6 +135,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LibrarieModele\LibrarieModele.csproj">
+      <Project>{d2addb44-bc86-4587-afd5-d9803efc3751}</Project>
+      <Name>LibrarieModele</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NivelAccesDate\NivelAccesDate.csproj">
+      <Project>{af94f9c0-20fb-4402-a236-2799168fd79d}</Project>
+      <Name>NivelAccesDate</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
