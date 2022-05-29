@@ -40,17 +40,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdministrareLiceu.cs" />
-    <Compile Include="AdministrareMaterie.cs" />
-    <Compile Include="AdministrareOras.cs" />
-    <Compile Include="AdministrarePersoana.cs" />
-    <Compile Include="AdministrareRepartizare.cs" />
-    <Compile Include="IStocareFactory.cs" />
-    <Compile Include="IStocareLicee.cs" />
-    <Compile Include="IStocareMaterie.cs" />
-    <Compile Include="IStocareOrase.cs" />
-    <Compile Include="IStocareProfesori.cs" />
-    <Compile Include="IStocareRepartizari.cs" />
+    <Compile Include="Administrare\AdministrareLiceu.cs" />
+    <Compile Include="Administrare\AdministrareMaterie.cs" />
+    <Compile Include="Administrare\AdministrareOras.cs" />
+    <Compile Include="Administrare\AdministrarePersoana.cs" />
+    <Compile Include="Administrare\AdministrareRepartizare.cs" />
+    <Compile Include="InterfataStocare\IStocareFactory.cs" />
+    <Compile Include="InterfataStocare\IStocareLicee.cs" />
+    <Compile Include="InterfataStocare\IStocareMaterie.cs" />
+    <Compile Include="InterfataStocare\IStocareOrase.cs" />
+    <Compile Include="InterfataStocare\IStocareProfesori.cs" />
+    <Compile Include="InterfataStocare\IStocareRepartizari.cs" />
     <Compile Include="SQLDbHelper.cs" />
   </ItemGroup>
   <ItemGroup>

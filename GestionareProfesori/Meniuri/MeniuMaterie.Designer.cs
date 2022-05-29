@@ -37,7 +37,7 @@
             // lblNume
             // 
             this.lblNume.AutoSize = true;
-            this.lblNume.Location = new System.Drawing.Point(136, 131);
+            this.lblNume.Location = new System.Drawing.Point(134, 85);
             this.lblNume.Name = "lblNume";
             this.lblNume.Size = new System.Drawing.Size(52, 13);
             this.lblNume.TabIndex = 6;
@@ -45,14 +45,14 @@
             // 
             // txtNume
             // 
-            this.txtNume.Location = new System.Drawing.Point(250, 131);
+            this.txtNume.Location = new System.Drawing.Point(227, 85);
             this.txtNume.Name = "txtNume";
             this.txtNume.Size = new System.Drawing.Size(100, 20);
             this.txtNume.TabIndex = 7;
             // 
             // buttonSterge
             // 
-            this.buttonSterge.Location = new System.Drawing.Point(412, 214);
+            this.buttonSterge.Location = new System.Drawing.Point(373, 201);
             this.buttonSterge.Name = "buttonSterge";
             this.buttonSterge.Size = new System.Drawing.Size(75, 23);
             this.buttonSterge.TabIndex = 20;
@@ -62,7 +62,7 @@
             // 
             // buttonSalvare
             // 
-            this.buttonSalvare.Location = new System.Drawing.Point(313, 214);
+            this.buttonSalvare.Location = new System.Drawing.Point(274, 201);
             this.buttonSalvare.Name = "buttonSalvare";
             this.buttonSalvare.Size = new System.Drawing.Size(75, 23);
             this.buttonSalvare.TabIndex = 19;
@@ -74,12 +74,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(467, 240);
             this.Controls.Add(this.buttonSterge);
             this.Controls.Add(this.buttonSalvare);
             this.Controls.Add(this.txtNume);
             this.Controls.Add(this.lblNume);
             this.Name = "MeniuMaterie";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MeniuMaterie";
             this.ResumeLayout(false);
             this.PerformLayout();

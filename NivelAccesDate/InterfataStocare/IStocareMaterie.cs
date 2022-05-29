@@ -16,5 +16,6 @@ namespace NivelAccesDate
         bool AddMaterie(Materie m);
 
         bool UpdateMaterie(Materie m);
+        bool DeleteMaterie(Materie m);
     }
 }

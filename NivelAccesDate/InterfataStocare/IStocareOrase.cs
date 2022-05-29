@@ -16,5 +16,6 @@ namespace NivelAccesDate
         bool AddOras(Oras o);
 
         bool UpdateOras(Oras o);
+        bool DeleteOras(Oras o);
     }
 }

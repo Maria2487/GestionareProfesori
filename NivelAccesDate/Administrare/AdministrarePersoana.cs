@@ -1,0 +1,78 @@
+﻿using LibrarieModele;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Oracle.DataAccess.Client;
+using System.Data;
+using System.Configuration;
+
+namespace NivelAccesDate
+{
+    public class AdministrarePersoana : IStocareProfesori
+    {
+        private const int PRIMUL_TABEL = 0;
+        private const int PRIMA_LINIE = 0;
+        private readonly string _NumeTabelLiceu = ConfigurationManager.AppSettings.Get("K_NumeTabelLiceu");
+        private readonly string _NumeTabelMaterii = ConfigurationManager.AppSettings.Get("K_NumeTabelMaterii");
+        private readonly string _NumeTabelOras = ConfigurationManager.AppSettings.Get("K_NumeTabelOras");
+        private readonly string _NumeTabelProfesor = ConfigurationManager.AppSettings.Get("K_NumeTabelProfesor");
+        private readonly string _NumeTabelRepartizare = ConfigurationManager.AppSettings.Get("K_NumeTabelRepartizare");
+        private readonly string _SecventaTabelLiceu = ConfigurationManager.AppSettings.Get("K_SecventaTabelLiceu");
+        private readonly string _SecventaTabelMaterie = ConfigurationManager.AppSettings.Get("K_SecventaTabelMaterie");
+        private readonly string _SecventaTabelOras = ConfigurationManager.AppSettings.Get("K_SecventaTabelOras");
+        private readonly string _SecventaTabelProfesor = ConfigurationManager.AppSettings.Get("K_SecventaTabelProfesor");
+        public bool AddProfesor(Profesor p)
+        {
+            return SqlDBHelper.ExecuteNonQuery(
+                $"INSERT INTO {_NumeTabelProfesor} VALUES ({_SecventaTabelProfesor}.nextval, :nume, :prenume, :idMaterie)", CommandType.Text,
+                new OracleParameter(":nume", OracleDbType.NVarchar2, p.nume, ParameterDirection.Input),
+                new OracleParameter(":prenume", OracleDbType.NVarchar2, p.prenume, ParameterDirection.Input),
+                new OracleParameter(":idMaterie", OracleDbType.Int32, p.idMaterie, ParameterDirection.Input));
+        }
+
+        public Profesor GetProfesor(int id)
+        {
+            Profesor result = null;
+            var dsProfesori = SqlDBHelper.ExecuteDataSet($"select * from {_NumeTabelProfesor} where idProfesor = :idProfesor", CommandType.Text,
+                new OracleParameter(":idProfesor", OracleDbType.Int32, id, ParameterDirection.Input));
+
+            if (dsProfesori.Tables[PRIMUL_TABEL].Rows.Count > 0)
+            {
+                DataRow linieDB = dsProfesori.Tables[PRIMUL_TABEL].Rows[PRIMA_LINIE];
+                result = new Profesor(linieDB);
+            }
+            return result;
+        }
+
+        public List<Profesor> GetProfesori()
+        {
+            var result = new List<Profesor>();
+            var dsProfesori = SqlDBHelper.ExecuteDataSet($"select * from {_NumeTabelProfesor}", CommandType.Text);
+
+            foreach (DataRow linieDB in dsProfesori.Tables[PRIMUL_TABEL].Rows)
+            {
+                result.Add(new Profesor(linieDB));
+            }
+            return result;
+        }
+
+        public bool UpdateProfesor(Profesor p)
+        {
+            return SqlDBHelper.ExecuteNonQuery(
+                $"UPDATE {_NumeTabelProfesor} set nume = :nume, prenume = :prenume, idMaterie = :idMaterie where idProfesor = :idProfesor", CommandType.Text,
+                new OracleParameter(":nume", OracleDbType.NVarchar2, p.nume, ParameterDirection.Input),
+                new OracleParameter(":prenume", OracleDbType.NVarchar2, p.prenume, ParameterDirection.Input),
+                new OracleParameter(":idMaterie", OracleDbType.Int32, p.idMaterie, ParameterDirection.Input),
+                new OracleParameter(":idProfesor", OracleDbType.Int32, p.idProfesor, ParameterDirection.Input));
+        }
+
+        public bool DeleteProfesor(Profesor p)
+        {
+            return SqlDBHelper.ExecuteNonQuery(
+                    $"DELETE FROM {_NumeTabelProfesor} WHERE idProfesor = :idProfesor", CommandType.Text,
+                    new OracleParameter(":idProfesor", OracleDbType.Int32, p.idProfesor, ParameterDirection.Input));
+        }
+    }
+}

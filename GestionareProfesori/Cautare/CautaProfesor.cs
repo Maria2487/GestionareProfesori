@@ -58,7 +58,7 @@ namespace GestionareProfesori
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             this.Hide();
-            MeniuProfesor meniuPersoana = new MeniuProfesor(adOrModif);
+            MeniuProfesor meniuPersoana = new MeniuProfesor(adOrModif, getIdDataGrid());
             meniuPersoana.ShowDialog();
             this.Show();
         }

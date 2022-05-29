@@ -39,6 +39,7 @@
             this.buttonMaterie = new System.Windows.Forms.Button();
             this.buttonPersoana = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.buttonRepartizare = new System.Windows.Forms.Button();
             this.PanelPrincipalLeft.SuspendLayout();
             this.PanelPrincipalCenter.SuspendLayout();
             this.panelAdauga.SuspendLayout();
@@ -100,12 +101,13 @@
             // 
             // panelAdauga
             // 
+            this.panelAdauga.Controls.Add(this.buttonRepartizare);
             this.panelAdauga.Controls.Add(this.buttonLiceu);
             this.panelAdauga.Controls.Add(this.buttonMaterie);
             this.panelAdauga.Controls.Add(this.buttonPersoana);
             this.panelAdauga.Location = new System.Drawing.Point(176, 39);
             this.panelAdauga.Name = "panelAdauga";
-            this.panelAdauga.Size = new System.Drawing.Size(252, 175);
+            this.panelAdauga.Size = new System.Drawing.Size(252, 220);
             this.panelAdauga.TabIndex = 3;
             // 
             // buttonLiceu
@@ -138,6 +140,15 @@
             this.buttonPersoana.UseVisualStyleBackColor = true;
             this.buttonPersoana.Click += new System.EventHandler(this.buttonPersoana_Click);
             // 
+            // buttonRepartizare
+            // 
+            this.buttonRepartizare.Location = new System.Drawing.Point(89, 165);
+            this.buttonRepartizare.Name = "buttonRepartizare";
+            this.buttonRepartizare.Size = new System.Drawing.Size(75, 23);
+            this.buttonRepartizare.TabIndex = 3;
+            this.buttonRepartizare.Text = "Repartizare?";
+            this.buttonRepartizare.UseVisualStyleBackColor = true;
+            // 
             // MeniuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -147,6 +158,7 @@
             this.Controls.Add(this.PanelPrincipalLeft);
             this.Controls.Add(this.PanelPrincipalUp);
             this.Name = "MeniuPrincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Meniu Principal";
             this.PanelPrincipalLeft.ResumeLayout(false);
             this.PanelPrincipalCenter.ResumeLayout(false);
@@ -168,6 +180,7 @@
         private System.Windows.Forms.Button buttonPersoana;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button buttonInformatii;
+        private System.Windows.Forms.Button buttonRepartizare;
     }
 }
 

@@ -16,6 +16,7 @@ namespace GestionareProfesori
     public partial class MeniuMaterie : Form
     {
         private const bool SUCCES = true;
+        private bool esteAdauga;
 
         IStocareLicee stocareLicee = (IStocareLicee)new StocareFactory().GetTipStocare(typeof(Liceu));
         IStocareMaterie stocareMaterii = (IStocareMaterie)new StocareFactory().GetTipStocare(typeof(Materie));
@@ -23,9 +24,10 @@ namespace GestionareProfesori
         IStocareProfesori stocareProfesori = (IStocareProfesori)new StocareFactory().GetTipStocare(typeof(Profesor));
         IStocareRepartizari stocareRepartizari = (IStocareRepartizari)new StocareFactory().GetTipStocare(typeof(Repartizare));
 
-        public MeniuMaterie(bool adOrModif)
+        public MeniuMaterie(bool esteAdauga)
         {
             InitializeComponent();
+            this.esteAdauga = esteAdauga;
             if (stocareMaterii == null)
             {
                 MessageBox.Show("Eroare la initializare");

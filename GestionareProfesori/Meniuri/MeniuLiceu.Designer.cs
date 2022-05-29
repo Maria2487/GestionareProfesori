@@ -39,15 +39,15 @@
             // comboBoxOras
             // 
             this.comboBoxOras.FormattingEnabled = true;
-            this.comboBoxOras.Location = new System.Drawing.Point(221, 44);
+            this.comboBoxOras.Location = new System.Drawing.Point(156, 99);
             this.comboBoxOras.Name = "comboBoxOras";
-            this.comboBoxOras.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxOras.Size = new System.Drawing.Size(242, 21);
             this.comboBoxOras.TabIndex = 0;
             // 
             // lblNume
             // 
             this.lblNume.AutoSize = true;
-            this.lblNume.Location = new System.Drawing.Point(146, 126);
+            this.lblNume.Location = new System.Drawing.Point(56, 37);
             this.lblNume.Name = "lblNume";
             this.lblNume.Size = new System.Drawing.Size(52, 13);
             this.lblNume.TabIndex = 1;
@@ -55,15 +55,15 @@
             // 
             // txtNume
             // 
-            this.txtNume.Location = new System.Drawing.Point(268, 126);
+            this.txtNume.Location = new System.Drawing.Point(156, 37);
             this.txtNume.Name = "txtNume";
-            this.txtNume.Size = new System.Drawing.Size(100, 20);
+            this.txtNume.Size = new System.Drawing.Size(242, 20);
             this.txtNume.TabIndex = 2;
             // 
             // lblOras
             // 
             this.lblOras.AutoSize = true;
-            this.lblOras.Location = new System.Drawing.Point(156, 47);
+            this.lblOras.Location = new System.Drawing.Point(56, 102);
             this.lblOras.Name = "lblOras";
             this.lblOras.Size = new System.Drawing.Size(29, 13);
             this.lblOras.TabIndex = 8;
@@ -71,27 +71,29 @@
             // 
             // buttonSterge
             // 
-            this.buttonSterge.Location = new System.Drawing.Point(507, 297);
+            this.buttonSterge.Location = new System.Drawing.Point(380, 192);
             this.buttonSterge.Name = "buttonSterge";
             this.buttonSterge.Size = new System.Drawing.Size(75, 23);
             this.buttonSterge.TabIndex = 20;
             this.buttonSterge.Text = "Sterge";
             this.buttonSterge.UseVisualStyleBackColor = true;
+            this.buttonSterge.Click += new System.EventHandler(this.buttonSterge_Click);
             // 
             // buttonSalvare
             // 
-            this.buttonSalvare.Location = new System.Drawing.Point(408, 297);
+            this.buttonSalvare.Location = new System.Drawing.Point(281, 192);
             this.buttonSalvare.Name = "buttonSalvare";
             this.buttonSalvare.Size = new System.Drawing.Size(75, 23);
             this.buttonSalvare.TabIndex = 19;
             this.buttonSalvare.Text = "Salveaza";
             this.buttonSalvare.UseVisualStyleBackColor = true;
+            this.buttonSalvare.Click += new System.EventHandler(this.buttonSalvare_Click);
             // 
             // MeniuLiceu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(467, 227);
             this.Controls.Add(this.buttonSterge);
             this.Controls.Add(this.buttonSalvare);
             this.Controls.Add(this.lblOras);
@@ -99,6 +101,7 @@
             this.Controls.Add(this.lblNume);
             this.Controls.Add(this.comboBoxOras);
             this.Name = "MeniuLiceu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MeniuLiceu";
             this.ResumeLayout(false);
             this.PerformLayout();

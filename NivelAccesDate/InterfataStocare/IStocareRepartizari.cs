@@ -16,5 +16,9 @@ namespace NivelAccesDate
         bool AddRepartizare(Repartizare r);
 
         bool UpdateRepartizare(Repartizare r, int idLiceuVechi);
+        bool DeleteRepartizarePentruLiceu(int idLiceu);
+        bool DeleteRepartizarePentruProfesor(int idProfesor);
+        bool DeleteRepartizare(Repartizare r);
+
     }
 }

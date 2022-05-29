@@ -16,5 +16,6 @@ namespace NivelAccesDate
         bool AddProfesor(Profesor p);
 
         bool UpdateProfesor(Profesor p);
+        bool DeleteProfesor(Profesor p);
     }
 }

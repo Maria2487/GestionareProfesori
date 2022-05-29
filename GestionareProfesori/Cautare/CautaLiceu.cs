@@ -52,15 +52,7 @@ namespace GestionareProfesori
                 MessageBox.Show(ex.Message.ToString());
             }
         }
-        #endregion
-
-        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            this.Hide();
-            MeniuLiceu meniuLiceu = new MeniuLiceu(adOrModif);
-            meniuLiceu.ShowDialog();
-            this.Show();
-        }
+       
 
         private int getIdDataGrid()
         {
@@ -69,18 +61,28 @@ namespace GestionareProfesori
                 var currentCell = dataGridView1.CurrentCell;
                 if (currentCell == null)
                 {
-                    MessageBox.Show("Selectati un profesor din tabel");
+                    MessageBox.Show("Selectati un liceu din tabel");
                     return 0;
                 }
 
-                int idStudent = Convert.ToInt32(dataGridView1[PRIMA_COLOANA, currentCell.RowIndex].Value);
-                return idStudent;
+                int idLiceu = Convert.ToInt32(dataGridView1[PRIMA_COLOANA, currentCell.RowIndex].Value);
+                return idLiceu;
             }
             catch (Exception)
             {
 
                 throw;
             }
+        }
+        #endregion
+
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.Hide();
+            MeniuLiceu meniuLiceu = new MeniuLiceu(adOrModif,getIdDataGrid());
+            meniuLiceu.ShowDialog();
+            this.Show();
         }
     }
 }

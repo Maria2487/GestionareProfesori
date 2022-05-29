@@ -16,5 +16,7 @@ namespace NivelAccesDate
         bool AddLiceu(Liceu l);
 
         bool UpdateLiceu(Liceu l);
+        bool DeleteLiceu(int l);
+
     }
 }

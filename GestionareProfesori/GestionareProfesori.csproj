@@ -33,9 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Oracle.DataAccess, Version=2.112.1.2, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,72 +49,90 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CautaLiceu.cs">
+    <Compile Include="Cautare\CautaLiceu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CautaLiceu.Designer.cs">
+    <Compile Include="Cautare\CautaLiceu.Designer.cs">
       <DependentUpon>CautaLiceu.cs</DependentUpon>
     </Compile>
-    <Compile Include="CautaMaterie.cs">
+    <Compile Include="Cautare\CautaMaterie.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CautaMaterie.Designer.cs">
+    <Compile Include="Cautare\CautaMaterie.Designer.cs">
       <DependentUpon>CautaMaterie.cs</DependentUpon>
     </Compile>
-    <Compile Include="CautaProfesor.cs">
+    <Compile Include="Cautare\CautaProfesor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CautaProfesor.Designer.cs">
+    <Compile Include="Cautare\CautaProfesor.Designer.cs">
       <DependentUpon>CautaProfesor.cs</DependentUpon>
     </Compile>
-    <Compile Include="MeniuLiceu.cs">
+    <Compile Include="Cautare\CautaRepartizare.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MeniuLiceu.Designer.cs">
+    <Compile Include="Cautare\CautaRepartizare.Designer.cs">
+      <DependentUpon>CautaRepartizare.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Meniuri\MeniuLiceu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Meniuri\MeniuLiceu.Designer.cs">
       <DependentUpon>MeniuLiceu.cs</DependentUpon>
     </Compile>
-    <Compile Include="MeniuMaterie.cs">
+    <Compile Include="Meniuri\MeniuMaterie.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MeniuMaterie.Designer.cs">
+    <Compile Include="Meniuri\MeniuMaterie.Designer.cs">
       <DependentUpon>MeniuMaterie.cs</DependentUpon>
     </Compile>
-    <Compile Include="MeniuProfesor.cs">
+    <Compile Include="Meniuri\MeniuProfesor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MeniuProfesor.Designer.cs">
+    <Compile Include="Meniuri\MeniuProfesor.Designer.cs">
       <DependentUpon>MeniuProfesor.cs</DependentUpon>
     </Compile>
-    <Compile Include="MeniuPrincipal.cs">
+    <Compile Include="Meniuri\MeniuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MeniuPrincipal.Designer.cs">
+    <Compile Include="Meniuri\MeniuPrincipal.Designer.cs">
       <DependentUpon>MeniuPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Meniuri\MeniuRepartizare.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Meniuri\MeniuRepartizare.Designer.cs">
+      <DependentUpon>MeniuRepartizare.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ShortHelp.cs" />
+    <Compile Include="ComboItem.cs" />
     <Compile Include="StocareFactory.cs" />
-    <EmbeddedResource Include="CautaLiceu.resx">
+    <EmbeddedResource Include="Cautare\CautaLiceu.resx">
       <DependentUpon>CautaLiceu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CautaMaterie.resx">
+    <EmbeddedResource Include="Cautare\CautaMaterie.resx">
       <DependentUpon>CautaMaterie.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CautaProfesor.resx">
+    <EmbeddedResource Include="Cautare\CautaProfesor.resx">
       <DependentUpon>CautaProfesor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MeniuLiceu.resx">
+    <EmbeddedResource Include="Cautare\CautaRepartizare.resx">
+      <DependentUpon>CautaRepartizare.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Meniuri\MeniuLiceu.resx">
       <DependentUpon>MeniuLiceu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MeniuMaterie.resx">
+    <EmbeddedResource Include="Meniuri\MeniuMaterie.resx">
       <DependentUpon>MeniuMaterie.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MeniuProfesor.resx">
+    <EmbeddedResource Include="Meniuri\MeniuProfesor.resx">
       <DependentUpon>MeniuProfesor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MeniuPrincipal.resx">
+    <EmbeddedResource Include="Meniuri\MeniuPrincipal.resx">
       <DependentUpon>MeniuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Meniuri\MeniuRepartizare.resx">
+      <DependentUpon>MeniuRepartizare.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
