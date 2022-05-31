@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,12 @@ namespace NivelAccesDate
         bool DeleteRepartizarePentruLiceu(int idLiceu);
         bool DeleteRepartizarePentruProfesor(int idProfesor);
         bool DeleteRepartizare(Repartizare r);
+        DataSet GetDetaliiRepartizari();
+        DataSet GetDetaliiCautaRepartizariLiceu(int l);
+        DataSet GetDetaliiCautaRepartizariNumeSauPrenume(string tip, string str);
+        //DataSet GetDetaliiCautaRepartizariPrenume(string str);
+        DataSet GetDetaliiCautaRepartizareNumeSiPrenume(string nume, string prenume);
+        DataSet GetDetaliiCautaRepartizare(int l, string nume, string prenume);
 
     }
 }

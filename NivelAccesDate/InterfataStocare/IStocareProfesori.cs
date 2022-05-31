@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,9 @@ namespace NivelAccesDate
         bool AddProfesor(Profesor p);
 
         bool UpdateProfesor(Profesor p);
-        bool DeleteProfesor(Profesor p);
+        bool DeleteProfesor(int p);
+        bool DeleteProfesorDupaMaterie(int m);
+
+        DataSet GetDetaliiProfesori();
     }
 }

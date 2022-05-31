@@ -24,9 +24,9 @@ namespace LibrarieModele
 
         public Liceu(DataRow linieDB)
         {
-            this.IdLiceu = Convert.ToInt32(linieDB["IdLiceu"]);
+            this.IdLiceu = Convert.ToInt32(linieDB["idLiceu"]);
             this.nume = linieDB["nume"].ToString();
-            this.IdOras = Convert.ToInt32(linieDB["IdOras"]);
+            this.IdOras = Convert.ToInt32(linieDB["idOras"]);
         }
     }
 }

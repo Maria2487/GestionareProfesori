@@ -34,14 +34,26 @@
             this.buttonModifica = new System.Windows.Forms.Button();
             this.buttonAdauga = new System.Windows.Forms.Button();
             this.PanelPrincipalCenter = new System.Windows.Forms.Panel();
+            this.panelInformatii = new System.Windows.Forms.Panel();
+            this.buttonRaspuns = new System.Windows.Forms.Button();
+            this.buttonResetare = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.groupBoxPanelInfo = new System.Windows.Forms.GroupBox();
+            this.radioButtonNumarMaterii = new System.Windows.Forms.RadioButton();
+            this.radioButtonNumarLiceeExistente = new System.Windows.Forms.RadioButton();
+            this.radioButtonNumarProfesoriExistenti = new System.Windows.Forms.RadioButton();
             this.panelAdauga = new System.Windows.Forms.Panel();
+            this.buttonRepartizare = new System.Windows.Forms.Button();
             this.buttonLiceu = new System.Windows.Forms.Button();
             this.buttonMaterie = new System.Windows.Forms.Button();
             this.buttonPersoana = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.buttonRepartizare = new System.Windows.Forms.Button();
+            this.labelInformatii = new System.Windows.Forms.Label();
             this.PanelPrincipalLeft.SuspendLayout();
             this.PanelPrincipalCenter.SuspendLayout();
+            this.panelInformatii.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBoxPanelInfo.SuspendLayout();
             this.panelAdauga.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,6 +82,7 @@
             this.buttonInformatii.TabIndex = 2;
             this.buttonInformatii.Text = "Cautati informatii?";
             this.buttonInformatii.UseVisualStyleBackColor = true;
+            this.buttonInformatii.Click += new System.EventHandler(this.buttonInformatii_Click);
             // 
             // buttonModifica
             // 
@@ -93,11 +106,99 @@
             // 
             // PanelPrincipalCenter
             // 
+            this.PanelPrincipalCenter.Controls.Add(this.panelInformatii);
             this.PanelPrincipalCenter.Controls.Add(this.panelAdauga);
             this.PanelPrincipalCenter.Location = new System.Drawing.Point(211, 70);
             this.PanelPrincipalCenter.Name = "PanelPrincipalCenter";
             this.PanelPrincipalCenter.Size = new System.Drawing.Size(590, 380);
             this.PanelPrincipalCenter.TabIndex = 2;
+            // 
+            // panelInformatii
+            // 
+            this.panelInformatii.Controls.Add(this.labelInformatii);
+            this.panelInformatii.Controls.Add(this.buttonRaspuns);
+            this.panelInformatii.Controls.Add(this.buttonResetare);
+            this.panelInformatii.Controls.Add(this.dataGridView1);
+            this.panelInformatii.Controls.Add(this.groupBoxPanelInfo);
+            this.panelInformatii.Location = new System.Drawing.Point(21, 19);
+            this.panelInformatii.Name = "panelInformatii";
+            this.panelInformatii.Size = new System.Drawing.Size(556, 349);
+            this.panelInformatii.TabIndex = 4;
+            // 
+            // buttonRaspuns
+            // 
+            this.buttonRaspuns.Location = new System.Drawing.Point(354, 141);
+            this.buttonRaspuns.Name = "buttonRaspuns";
+            this.buttonRaspuns.Size = new System.Drawing.Size(75, 23);
+            this.buttonRaspuns.TabIndex = 22;
+            this.buttonRaspuns.Text = "Raspuns";
+            this.buttonRaspuns.UseVisualStyleBackColor = true;
+            this.buttonRaspuns.Click += new System.EventHandler(this.buttonRaspuns_Click);
+            // 
+            // buttonResetare
+            // 
+            this.buttonResetare.Location = new System.Drawing.Point(449, 141);
+            this.buttonResetare.Name = "buttonResetare";
+            this.buttonResetare.Size = new System.Drawing.Size(75, 23);
+            this.buttonResetare.TabIndex = 21;
+            this.buttonResetare.Text = "Resetare";
+            this.buttonResetare.UseVisualStyleBackColor = true;
+            this.buttonResetare.Click += new System.EventHandler(this.buttonResetare_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(24, 170);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(500, 147);
+            this.dataGridView1.TabIndex = 2;
+            // 
+            // groupBoxPanelInfo
+            // 
+            this.groupBoxPanelInfo.Controls.Add(this.radioButtonNumarMaterii);
+            this.groupBoxPanelInfo.Controls.Add(this.radioButtonNumarLiceeExistente);
+            this.groupBoxPanelInfo.Controls.Add(this.radioButtonNumarProfesoriExistenti);
+            this.groupBoxPanelInfo.Location = new System.Drawing.Point(24, 20);
+            this.groupBoxPanelInfo.Name = "groupBoxPanelInfo";
+            this.groupBoxPanelInfo.Size = new System.Drawing.Size(500, 115);
+            this.groupBoxPanelInfo.TabIndex = 1;
+            this.groupBoxPanelInfo.TabStop = false;
+            this.groupBoxPanelInfo.Text = "Alegeti informatia dorita";
+            // 
+            // radioButtonNumarMaterii
+            // 
+            this.radioButtonNumarMaterii.AutoSize = true;
+            this.radioButtonNumarMaterii.Location = new System.Drawing.Point(17, 92);
+            this.radioButtonNumarMaterii.Name = "radioButtonNumarMaterii";
+            this.radioButtonNumarMaterii.Size = new System.Drawing.Size(157, 17);
+            this.radioButtonNumarMaterii.TabIndex = 2;
+            this.radioButtonNumarMaterii.TabStop = true;
+            this.radioButtonNumarMaterii.Text = "Numarul de materii existente";
+            this.radioButtonNumarMaterii.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonNumarLiceeExistente
+            // 
+            this.radioButtonNumarLiceeExistente.AutoSize = true;
+            this.radioButtonNumarLiceeExistente.Location = new System.Drawing.Point(17, 59);
+            this.radioButtonNumarLiceeExistente.Name = "radioButtonNumarLiceeExistente";
+            this.radioButtonNumarLiceeExistente.Size = new System.Drawing.Size(149, 17);
+            this.radioButtonNumarLiceeExistente.TabIndex = 1;
+            this.radioButtonNumarLiceeExistente.TabStop = true;
+            this.radioButtonNumarLiceeExistente.Text = "Numarul de licee existente";
+            this.radioButtonNumarLiceeExistente.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonNumarProfesoriExistenti
+            // 
+            this.radioButtonNumarProfesoriExistenti.AutoSize = true;
+            this.radioButtonNumarProfesoriExistenti.Location = new System.Drawing.Point(17, 29);
+            this.radioButtonNumarProfesoriExistenti.Name = "radioButtonNumarProfesoriExistenti";
+            this.radioButtonNumarProfesoriExistenti.Size = new System.Drawing.Size(157, 17);
+            this.radioButtonNumarProfesoriExistenti.TabIndex = 0;
+            this.radioButtonNumarProfesoriExistenti.TabStop = true;
+            this.radioButtonNumarProfesoriExistenti.Text = "Numarul de profesori existeti";
+            this.radioButtonNumarProfesoriExistenti.UseVisualStyleBackColor = true;
             // 
             // panelAdauga
             // 
@@ -109,6 +210,16 @@
             this.panelAdauga.Name = "panelAdauga";
             this.panelAdauga.Size = new System.Drawing.Size(252, 220);
             this.panelAdauga.TabIndex = 3;
+            // 
+            // buttonRepartizare
+            // 
+            this.buttonRepartizare.Location = new System.Drawing.Point(89, 165);
+            this.buttonRepartizare.Name = "buttonRepartizare";
+            this.buttonRepartizare.Size = new System.Drawing.Size(75, 23);
+            this.buttonRepartizare.TabIndex = 3;
+            this.buttonRepartizare.Text = "Repartizare?";
+            this.buttonRepartizare.UseVisualStyleBackColor = true;
+            this.buttonRepartizare.Click += new System.EventHandler(this.buttonRepartizare_Click);
             // 
             // buttonLiceu
             // 
@@ -140,14 +251,13 @@
             this.buttonPersoana.UseVisualStyleBackColor = true;
             this.buttonPersoana.Click += new System.EventHandler(this.buttonPersoana_Click);
             // 
-            // buttonRepartizare
+            // labelInformatii
             // 
-            this.buttonRepartizare.Location = new System.Drawing.Point(89, 165);
-            this.buttonRepartizare.Name = "buttonRepartizare";
-            this.buttonRepartizare.Size = new System.Drawing.Size(75, 23);
-            this.buttonRepartizare.TabIndex = 3;
-            this.buttonRepartizare.Text = "Repartizare?";
-            this.buttonRepartizare.UseVisualStyleBackColor = true;
+            this.labelInformatii.AutoSize = true;
+            this.labelInformatii.Location = new System.Drawing.Point(264, 324);
+            this.labelInformatii.Name = "labelInformatii";
+            this.labelInformatii.Size = new System.Drawing.Size(0, 13);
+            this.labelInformatii.TabIndex = 23;
             // 
             // MeniuPrincipal
             // 
@@ -162,6 +272,11 @@
             this.Text = "Meniu Principal";
             this.PanelPrincipalLeft.ResumeLayout(false);
             this.PanelPrincipalCenter.ResumeLayout(false);
+            this.panelInformatii.ResumeLayout(false);
+            this.panelInformatii.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBoxPanelInfo.ResumeLayout(false);
+            this.groupBoxPanelInfo.PerformLayout();
             this.panelAdauga.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -181,6 +296,15 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button buttonInformatii;
         private System.Windows.Forms.Button buttonRepartizare;
+        private System.Windows.Forms.Panel panelInformatii;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button buttonResetare;
+        private System.Windows.Forms.GroupBox groupBoxPanelInfo;
+        private System.Windows.Forms.RadioButton radioButtonNumarMaterii;
+        private System.Windows.Forms.RadioButton radioButtonNumarLiceeExistente;
+        private System.Windows.Forms.RadioButton radioButtonNumarProfesoriExistenti;
+        private System.Windows.Forms.Button buttonRaspuns;
+        private System.Windows.Forms.Label labelInformatii;
     }
 }
 

@@ -39,14 +39,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Liceu.cs" />
-    <Compile Include="Materie.cs" />
-    <Compile Include="Oras.cs" />
-    <Compile Include="Profesor.cs" />
-    <Compile Include="Repartizare.cs" />
+    <Compile Include="Entitati\Liceu.cs" />
+    <Compile Include="Entitati\Materie.cs" />
+    <Compile Include="Entitati\Oras.cs" />
+    <Compile Include="Entitati\Profesor.cs" />
+    <Compile Include="Entitati\Repartizare.cs" />
+    <Compile Include="Helper\Afisari.cs" />
+    <Compile Include="Helper\CautaElement.cs" />
+    <Compile Include="Helper\ComboItem.cs" />
+    <Compile Include="Helper\Validari.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Data" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

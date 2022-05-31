@@ -52,15 +52,6 @@ namespace GestionareProfesori
                 MessageBox.Show(ex.Message.ToString());
             }
         }
-        #endregion
-
-        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            this.Hide();
-            MeniuMaterie meniuMaterie = new MeniuMaterie(adOrModif);
-            meniuMaterie.ShowDialog();
-            this.Show();
-        }
 
         private int getIdDataGrid()
         {
@@ -73,14 +64,55 @@ namespace GestionareProfesori
                     return 0;
                 }
 
-                int idStudent = Convert.ToInt32(dataGridView1[PRIMA_COLOANA, currentCell.RowIndex].Value);
-                return idStudent;
+                int idMaterie = Convert.ToInt32(dataGridView1[PRIMA_COLOANA, currentCell.RowIndex].Value);
+                return idMaterie;
             }
             catch (Exception)
             {
 
                 throw;
             }
+        }
+
+        #endregion
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.Hide();
+            MeniuMaterie meniuMaterie = new MeniuMaterie(adOrModif,getIdDataGrid());
+            if (meniuMaterie.ShowDialog() == DialogResult.OK)
+                AfisareMaterii();
+            this.Show();
+        }
+
+       
+
+        private void buttonCauta_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var materie = stocareMaterii.GetMaterii();
+                if (materie != null && materie.Any())
+                {
+                    dataGridView1.DataSource = materie.Where(d => d.nume.ToUpper() == txtNume.Text.ToUpper())
+                                                      .Select(m => new { m.idMaterie, m.nume }).ToList();
+
+                    dataGridView1.Columns["idMaterie"].Visible = false;
+                    dataGridView1.Columns["nume"].HeaderText = "Materie";
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+
+        }
+
+        private void buttonResetare_Click(object sender, EventArgs e)
+        {
+            AfisareMaterii();
+            txtNume.Text = String.Empty;
         }
     }
 }

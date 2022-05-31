@@ -62,9 +62,11 @@ namespace NivelAccesDate
         public bool UpdateLiceu(Liceu l)
         {
             return SqlDBHelper.ExecuteNonQuery(
-                $"UPDATE {_NumeTabelLiceu} set nume = :nume, idOras=idOras where idLiceu = :idLiceu", CommandType.Text,
+                $"UPDATE {_NumeTabelLiceu} set nume = :nume, idOras = :idOras where idLiceu = :idLiceu", CommandType.Text,
                  new OracleParameter(":nume", OracleDbType.Varchar2, l.nume, ParameterDirection.Input),
-                 new OracleParameter(":idLiceu", OracleDbType.Int32, l.IdLiceu, ParameterDirection.Input));
+                 new OracleParameter(":idOras", OracleDbType.Int32, l.IdOras, ParameterDirection.Input),
+                 new OracleParameter(":idLiceu", OracleDbType.Int32, l.IdLiceu, ParameterDirection.Input)
+                 );
         }
 
         public bool DeleteLiceu( int l)
@@ -72,7 +74,50 @@ namespace NivelAccesDate
             return SqlDBHelper.ExecuteNonQuery(
                     $"DELETE FROM {_NumeTabelLiceu} WHERE idLiceu = :idLiceu", CommandType.Text,
                     new OracleParameter(":idLiceu", OracleDbType.Int32, l, ParameterDirection.Input));
+        }
 
+
+
+
+        public List<Liceu> GetProgrameStudii(List<CautaElement> searchElements)
+        {
+            var result = new List<Liceu>();
+            StringBuilder conditions = new StringBuilder();
+
+            foreach (var item in searchElements)
+            {
+                int number;
+                if (Int32.TryParse(item.Value, out number))
+                    conditions.Append($"{item.ColumnName} = {number} AND ");
+                else
+                    conditions.Append($"UPPER({item.ColumnName}) LIKE '%{item.Value.ToUpper()}%' AND ");
+            }
+
+            conditions = conditions.Remove(conditions.Length - 4, 3);
+            var ds = SqlDBHelper.ExecuteDataSet($"SELECT * FROM {_NumeTabelLiceu} WHERE {conditions}", CommandType.Text);
+
+            foreach (DataRow linieDB in ds.Tables[PRIMUL_TABEL].Rows)
+            {
+                result.Add(new Liceu(linieDB));
+            }
+            return result;
+        }
+
+        public DataSet GetDetaliiLicee()
+        {
+            var dsPrograme = SqlDBHelper.ExecuteDataSet($"SELECT L.idLiceu, L.nume AS numeLiceu, O.idOras, O.nume AS numeOras FROM {_NumeTabelLiceu} L, {_NumeTabelOras} O WHERE L.idLiceu = idLiceu AND O.idOras = L.idOras", CommandType.Text);
+            return dsPrograme;
+        }
+
+        public int CountLicee()
+        {
+            int result;
+            //var resultat =  SqlDBHelper.ExecuteNonQuery($"SELECT COUNT(*) FROM {_NumeTabelLiceu}", CommandType.Text);
+            return result = -1;
         }
     }
 }
+
+
+
+

@@ -35,7 +35,7 @@ namespace GestionareProfesori
                         }
                         if (tipEntitate == typeof(Profesor))
                         {
-                            return new AdministrarePersoana();
+                            return new AdministrareProfesori();
                         }
                         if (tipEntitate == typeof(Repartizare))
                         {

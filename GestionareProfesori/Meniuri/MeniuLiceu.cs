@@ -18,6 +18,9 @@ namespace GestionareProfesori
         private const bool SUCCES = true;
         private bool esteAdauga;
         private int idLiceuSelectat;
+        public bool itemAdaugat = false;
+
+        
 
         IStocareLicee stocareLicee = (IStocareLicee)new StocareFactory().GetTipStocare(typeof(Liceu));
         IStocareMaterie stocareMaterii = (IStocareMaterie)new StocareFactory().GetTipStocare(typeof(Materie));
@@ -28,13 +31,39 @@ namespace GestionareProfesori
         public MeniuLiceu(bool esteAdauga, int idLiceuSelectat = -1)
         {
             InitializeComponent();
+            if (esteAdauga)
+            {
+                radioButtonColegiu.Checked = false;
+                radioButtonLiceu.Checked = false;
+                buttonSterge.Visible = false;
+                buttonResetare.Visible = false;
+            }
+            else
+            {
+                radioButtonColegiu.Checked = false;
+                radioButtonLiceu.Checked = false;   
+                buttonSterge.Visible = true;
+                buttonResetare.Visible = true;
+            }
+
+            if (stocareLicee == null )
+            {
+                MessageBox.Show("Eroare la initializare");
+            }
+
+
             this.esteAdauga = esteAdauga;
             this.idLiceuSelectat = idLiceuSelectat;
-            IncarcaOrase();
+
+            IncarcaMeniuLiceu();
         }
 
         #region METODE 
-        private void IncarcaOrase()
+        private void FormAnterior()
+        {
+            this.Close();
+        }
+        private void IncarcaMeniuLiceu()
         {
             if (esteAdauga)
             {
@@ -61,6 +90,8 @@ namespace GestionareProfesori
             {
                 try
                 {
+                    Liceu l = stocareLicee.GetLiceu(idLiceuSelectat);
+                    txtNume.Text = l.nume;
                     //se elimina itemii deja adaugati
                     comboBoxOras.Items.Clear();
 
@@ -108,15 +139,14 @@ namespace GestionareProfesori
                 return;
 
             var resultPrograme = stocareRepartizari.DeleteRepartizarePentruLiceu(liceu.IdLiceu);
-            if (resultPrograme == true)
-            {
-                var result = stocareLicee.DeleteLiceu(liceu.IdLiceu);
 
-                if (result == true)
-                {
-                    MessageBox.Show($"Liceul: {liceu.nume} a fost stears cu succes");
-                }
+            var result = stocareLicee.DeleteLiceu(liceu.IdLiceu);
+            if (result == true)
+            {
+                MessageBox.Show($"Liceul: {liceu.nume} a fost stears cu succes");
+                itemAdaugat = true;
             }
+            FormAnterior();
         }
 
         private void buttonSalvare_Click(object sender, EventArgs e)
@@ -125,14 +155,42 @@ namespace GestionareProfesori
             {
                 try
                 {
-                    var rezultat = stocareLicee.AddLiceu(new Liceu(txtNume.Text, ((ComboItem)comboBoxOras.SelectedItem).Value));
-                    if (rezultat == SUCCES)
+                    if(Validari.ValidareDenumire(txtNume.Text) == "SUCCES")
                     {
-                        MessageBox.Show("Liceu adaugat");
+                        if (comboBoxOras.SelectedItem != null)
+                        {
+                            string nume = "";
+                            if (radioButtonLiceu.Checked)
+                            {
+                                nume = "Liceul `" + txtNume.Text +"`";
+                            }
+
+                            if (radioButtonColegiu.Checked)
+                            {
+                                nume = "Colegiul `" + txtNume.Text + "`";
+                            }
+                            if (radioButtonColegiu.Checked == false && radioButtonLiceu.Checked == false)
+                            {
+                                nume = "Liceul `" + txtNume.Text + "`";
+                            }
+                            var rezultat = stocareLicee.AddLiceu(new Liceu(nume, ((ComboItem)comboBoxOras.SelectedItem).Value));
+                            if (rezultat == SUCCES)
+                            {
+                                MessageBox.Show("Liceu adaugat");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Eroare la adaugarea liceului");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Selectati orasul in care se infiinteaza liceul");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Eroare la adaugarea liceului");
+                        MessageBox.Show(Validari.ValidareDenumire(txtNume.Text));
                     }
                 }
                 catch (Exception ex)
@@ -144,25 +202,46 @@ namespace GestionareProfesori
             {
                 try
                 {
-                    var liceu = new Liceu(
-                        txtNume.Text,
-                        ((ComboItem)comboBoxOras.SelectedItem).Value);
-
-                    var rezultat = stocareLicee.UpdateLiceu(liceu);
-                    if (rezultat == SUCCES)
+                    if (Validari.ValidareDenumire(txtNume.Text) == "SUCCES")
                     {
-                        MessageBox.Show("Liceu actualizat");
+                        var liceu = new Liceu(txtNume.Text, ((ComboItem)comboBoxOras.SelectedItem).Value, idLiceuSelectat);
+
+                        var rezultat = stocareLicee.UpdateLiceu(liceu);
+                        if (rezultat == SUCCES)
+                        {
+                            MessageBox.Show("Liceu actualizat");
+                            itemAdaugat = true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Eroare la actualizarea liceului");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Eroare la actualizarea liceului");
+                        MessageBox.Show(Validari.ValidareDenumire(txtNume.Text));
                     }
+
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Exceptie" + ex.Message);
                 }
             }
+            FormAnterior();
+        }
+
+        private void MeniuLiceu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(itemAdaugat)
+            {
+                this.DialogResult = DialogResult.OK;
+            }
+        }
+
+        private void buttonResetare_Click(object sender, EventArgs e)
+        {
+            IncarcaMeniuLiceu();
         }
     }
 }

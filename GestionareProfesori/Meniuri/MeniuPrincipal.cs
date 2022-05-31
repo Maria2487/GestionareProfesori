@@ -29,12 +29,14 @@ namespace GestionareProfesori
         {
             InitializeComponent();
             panelAdauga.Visible = false;
+            panelInformatii.Visible = false;
         }
 
         private void buttonAdauga_Click(object sender, EventArgs e)
         {
             addApasat = true;
             panelAdauga.Visible = true;
+            panelInformatii.Visible = false;
             modificatApasat = false;
         }
 
@@ -42,7 +44,8 @@ namespace GestionareProfesori
         {
             modificatApasat = true;
             panelAdauga.Visible=true;
-            addApasat=false;
+            panelInformatii.Visible = false;
+            addApasat =false;
         }
 
         private void buttonPersoana_Click(object sender, EventArgs e)
@@ -105,6 +108,69 @@ namespace GestionareProfesori
                 cautaLiceu.ShowDialog();
                 panelAdauga.Visible = false;
                 this.Show();
+            }
+        }
+
+        private void buttonRepartizare_Click(object sender, EventArgs e)
+        {
+            if (addApasat)
+            {
+                this.Hide();
+                MeniuRepartizare meniuRepartizare = new MeniuRepartizare(addApasat);
+                meniuRepartizare.ShowDialog();
+                panelAdauga.Visible = false;
+                this.Show();
+
+            }
+            if (modificatApasat)
+            {
+                this.Hide();
+                CautaRepartizare cautaRepartizare = new CautaRepartizare();
+                cautaRepartizare.ShowDialog();
+                panelAdauga.Visible = false;
+                this.Show();
+            }
+        }
+
+        private void buttonInformatii_Click(object sender, EventArgs e)
+        {
+            panelAdauga.Visible = false;
+            panelInformatii.Visible = true;
+        }
+
+
+        private void ResetarePagina()
+        {
+            dataGridView1.Rows.Clear();
+            foreach(Control p in this.Controls)
+            {
+                if (p is RadioButton && ((RadioButton)p).Checked == true)
+                {
+                    ((RadioButton)p).Checked = false;
+                }
+            }
+        }
+
+        private void buttonResetare_Click(object sender, EventArgs e)
+        {
+            ResetarePagina();
+        }
+
+        private void buttonRaspuns_Click(object sender, EventArgs e)
+        {
+            if(radioButtonNumarLiceeExistente.Checked == true)
+            {
+                
+            }
+
+            if (radioButtonNumarProfesoriExistenti.Checked == true)
+            {
+
+            }
+
+            if (radioButtonNumarMaterii.Checked == true)
+            {
+
             }
         }
     }

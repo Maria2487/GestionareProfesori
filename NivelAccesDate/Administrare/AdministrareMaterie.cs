@@ -60,9 +60,9 @@ namespace NivelAccesDate
         public bool UpdateMaterie(Materie m)
         {
             return SqlDBHelper.ExecuteNonQuery(
-                $"UPDATE {_NumeTabelMaterii} set nume = :nume, where idMaterie = :idMaterie", CommandType.Text,
+                $"UPDATE {_NumeTabelMaterii} set nume = :nume where idMaterie = :idMaterie", CommandType.Text,
                 new OracleParameter(":nume", OracleDbType.NVarchar2, m.nume, ParameterDirection.Input),
-                new OracleParameter(":idMaterie", OracleDbType.NVarchar2, m.idMaterie, ParameterDirection.Input));
+                new OracleParameter(":idMaterie", OracleDbType.Int32, m.idMaterie, ParameterDirection.Input));
         }
 
         public bool DeleteMaterie(Materie m)

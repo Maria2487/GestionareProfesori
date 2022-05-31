@@ -36,6 +36,7 @@
             this.buttonSalvare = new System.Windows.Forms.Button();
             this.buttonSterge = new System.Windows.Forms.Button();
             this.lblMaterie = new System.Windows.Forms.Label();
+            this.buttonResetare = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtNume
@@ -86,6 +87,7 @@
             this.buttonSalvare.TabIndex = 17;
             this.buttonSalvare.Text = "Salveaza";
             this.buttonSalvare.UseVisualStyleBackColor = true;
+            this.buttonSalvare.Click += new System.EventHandler(this.buttonSalvare_Click);
             // 
             // buttonSterge
             // 
@@ -106,11 +108,22 @@
             this.lblMaterie.TabIndex = 19;
             this.lblMaterie.Text = "Materie";
             // 
+            // buttonResetare
+            // 
+            this.buttonResetare.Location = new System.Drawing.Point(371, 105);
+            this.buttonResetare.Name = "buttonResetare";
+            this.buttonResetare.Size = new System.Drawing.Size(131, 23);
+            this.buttonResetare.TabIndex = 20;
+            this.buttonResetare.Text = "Resetare date initiale";
+            this.buttonResetare.UseVisualStyleBackColor = true;
+            this.buttonResetare.Click += new System.EventHandler(this.buttonResetare_Click);
+            // 
             // MeniuProfesor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(528, 324);
+            this.Controls.Add(this.buttonResetare);
             this.Controls.Add(this.lblMaterie);
             this.Controls.Add(this.buttonSterge);
             this.Controls.Add(this.buttonSalvare);
@@ -122,6 +135,7 @@
             this.Name = "MeniuProfesor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MeniuPersoana";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MeniuProfesor_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -136,5 +150,6 @@
         private System.Windows.Forms.Button buttonSalvare;
         private System.Windows.Forms.Button buttonSterge;
         private System.Windows.Forms.Label lblMaterie;
+        private System.Windows.Forms.Button buttonResetare;
     }
 }

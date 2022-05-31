@@ -43,7 +43,7 @@
     <Compile Include="Administrare\AdministrareLiceu.cs" />
     <Compile Include="Administrare\AdministrareMaterie.cs" />
     <Compile Include="Administrare\AdministrareOras.cs" />
-    <Compile Include="Administrare\AdministrarePersoana.cs" />
+    <Compile Include="Administrare\AdministrareProfesori.cs" />
     <Compile Include="Administrare\AdministrareRepartizare.cs" />
     <Compile Include="InterfataStocare\IStocareFactory.cs" />
     <Compile Include="InterfataStocare\IStocareLicee.cs" />

@@ -105,7 +105,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ComboItem.cs" />
     <Compile Include="StocareFactory.cs" />
     <EmbeddedResource Include="Cautare\CautaLiceu.resx">
       <DependentUpon>CautaLiceu.cs</DependentUpon>

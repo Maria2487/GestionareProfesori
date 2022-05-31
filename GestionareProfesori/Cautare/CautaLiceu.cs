@@ -27,24 +27,27 @@ namespace GestionareProfesori
         public CautaLiceu()
         {
             InitializeComponent();
+            IncarcaOrase();
             AfisareLicee();
         }
 
 
         #region FUNCTII
-        private void AfisareLicee()
+
+        private void IncarcaOrase()
         {
             try
             {
-                var licee = stocareLicee.GetLicee();
-                if (licee != null && licee.Any())
+                //se elimina itemii deja adaugati
+                comboBoxOras.Items.Clear();
+
+                var orase = stocareOrase.GetOrase();
+                if (orase != null && orase.Any())
                 {
-                    dataGridView1.DataSource = licee.Select(l => new { l.IdLiceu, l.nume, l.IdOras }).ToList();
-
-                    dataGridView1.Columns["idLiceu"].Visible = false;
-                    dataGridView1.Columns["nume"].HeaderText = "Liceu";
-                    dataGridView1.Columns["idOras"].HeaderText = "Oras";
-
+                    foreach (var item in orase)
+                    {
+                        comboBoxOras.Items.Add(new ComboItem(item.nume, (Int32)item.idOras));
+                    }
                 }
             }
             catch (Exception ex)
@@ -52,8 +55,55 @@ namespace GestionareProfesori
                 MessageBox.Show(ex.Message.ToString());
             }
         }
-       
+        private void AfisareLicee()
+        {
+            try
+            {
+                var licee = stocareLicee.GetDetaliiLicee();
+                if (licee != null)
+                {
+                    
+                    dataGridView1.DataSource = licee.Tables[0];
+                    
+                    dataGridView1.Columns["idLiceu"].Visible = false;
+                    dataGridView1.Columns["numeLiceu"].HeaderText = "Liceu";
+                    dataGridView1.Columns["idOras"].Visible = false;
+                    dataGridView1.Columns["numeOras"].HeaderText = "Oras";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
 
+        private void AfisareLiceeDupaCauta(DataGridView dataGridView, List<Liceu> licee, int idOras = -1)
+        {
+            try
+            {
+                if (licee != null && licee.Any() && idOras != -1)
+                {
+                    dataGridView.DataSource = licee.Where(o => o.IdOras == idOras)
+                                                      .Select(l => new { l.IdLiceu, l.nume, l.IdOras })
+                                                      .ToList();
+
+                    dataGridView1.Columns["idLiceu"].Visible = false;
+                    dataGridView1.Columns["nume"].HeaderText = "Liceu";
+                }
+                if (licee != null && licee.Any() && idOras == -1)
+                {
+                    dataGridView.DataSource = licee.Select(l => new { l.IdLiceu, l.nume, l.IdOras })
+                                                   .ToList();
+
+                    dataGridView1.Columns["idLiceu"].Visible = false;
+                    dataGridView1.Columns["nume"].HeaderText = "Liceu";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
         private int getIdDataGrid()
         {
             try
@@ -74,6 +124,7 @@ namespace GestionareProfesori
                 throw;
             }
         }
+        
         #endregion
 
 
@@ -81,8 +132,53 @@ namespace GestionareProfesori
         {
             this.Hide();
             MeniuLiceu meniuLiceu = new MeniuLiceu(adOrModif,getIdDataGrid());
-            meniuLiceu.ShowDialog();
+            if (meniuLiceu.ShowDialog() == DialogResult.OK)
+                AfisareLicee();
             this.Show();
+        }
+
+        private void buttonCauta_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<CautaElement> searchElements = new List<CautaElement>();
+
+                // Aici se gaseste si denumiera facultatii dar si specializarea programului de studiu
+                if (txtNume.Text != String.Empty)
+                    searchElements.Add(new CautaElement("nume", txtNume.Text));
+
+                List<Liceu> licee;
+                if (comboBoxOras.SelectedItem != null)
+                    searchElements.Add(new CautaElement("idOras", ((ComboItem)comboBoxOras.SelectedItem).Value.ToString()));
+
+
+                if (searchElements.Count > 1)
+                {
+                    licee = stocareLicee.GetProgrameStudii(searchElements);
+                }
+                else
+                    licee = stocareLicee.GetLicee();
+
+                if (licee.Count == 0)
+                {
+                    dataGridView1.DataSource = null;
+                    MessageBox.Show("Niciun rezultat gasit");
+                }
+                else
+                    AfisareLiceeDupaCauta(dataGridView1, licee, ((ComboItem)comboBoxOras.SelectedItem).Value);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        private void buttonResetare_Click(object sender, EventArgs e)
+        {
+            comboBoxOras.ResetText();
+            IncarcaOrase();
+            AfisareLicee(); 
+            
         }
     }
 }

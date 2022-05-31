@@ -10,7 +10,7 @@ using System.Configuration;
 
 namespace NivelAccesDate
 {
-    public class AdministrarePersoana : IStocareProfesori
+    public class AdministrareProfesori : IStocareProfesori
     {
         private const int PRIMUL_TABEL = 0;
         private const int PRIMA_LINIE = 0;
@@ -68,11 +68,23 @@ namespace NivelAccesDate
                 new OracleParameter(":idProfesor", OracleDbType.Int32, p.idProfesor, ParameterDirection.Input));
         }
 
-        public bool DeleteProfesor(Profesor p)
+        public bool DeleteProfesor(int p)
         {
             return SqlDBHelper.ExecuteNonQuery(
                     $"DELETE FROM {_NumeTabelProfesor} WHERE idProfesor = :idProfesor", CommandType.Text,
-                    new OracleParameter(":idProfesor", OracleDbType.Int32, p.idProfesor, ParameterDirection.Input));
+                    new OracleParameter(":idProfesor", OracleDbType.Int32, p, ParameterDirection.Input));
+        }
+        public bool DeleteProfesorDupaMaterie(int m)
+        {
+            return SqlDBHelper.ExecuteNonQuery(
+                    $"DELETE FROM {_NumeTabelProfesor} WHERE idMaterie = :idMaterie", CommandType.Text,
+                    new OracleParameter(":idMaterie", OracleDbType.Int32, m, ParameterDirection.Input));
+        }
+
+        public DataSet GetDetaliiProfesori()
+        {
+            var dsPrograme = SqlDBHelper.ExecuteDataSet($"SELECT P.idProfesor, P.nume AS numeProfesor, P.prenume, M.idMaterie, M.nume AS numeMaterie FROM {_NumeTabelProfesor} P, {_NumeTabelMaterii} M WHERE P.idMaterie = M.idMaterie", CommandType.Text);
+            return dsPrograme;
         }
     }
 }
