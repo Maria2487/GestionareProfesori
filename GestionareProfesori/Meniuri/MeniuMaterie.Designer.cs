@@ -38,54 +38,62 @@
             // lblNume
             // 
             this.lblNume.AutoSize = true;
-            this.lblNume.Location = new System.Drawing.Point(56, 88);
+            this.lblNume.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNume.Location = new System.Drawing.Point(12, 84);
             this.lblNume.Name = "lblNume";
-            this.lblNume.Size = new System.Drawing.Size(52, 13);
+            this.lblNume.Size = new System.Drawing.Size(118, 29);
             this.lblNume.TabIndex = 6;
             this.lblNume.Text = "Denumire";
             // 
             // txtNume
             // 
-            this.txtNume.Location = new System.Drawing.Point(149, 88);
+            this.txtNume.Location = new System.Drawing.Point(149, 89);
             this.txtNume.Name = "txtNume";
-            this.txtNume.Size = new System.Drawing.Size(100, 20);
+            this.txtNume.Size = new System.Drawing.Size(167, 20);
             this.txtNume.TabIndex = 7;
             // 
             // buttonSterge
             // 
-            this.buttonSterge.Location = new System.Drawing.Point(373, 201);
+            this.buttonSterge.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(142)))), ((int)(((byte)(136)))));
+            this.buttonSterge.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSterge.Location = new System.Drawing.Point(411, 198);
             this.buttonSterge.Name = "buttonSterge";
-            this.buttonSterge.Size = new System.Drawing.Size(75, 23);
+            this.buttonSterge.Size = new System.Drawing.Size(140, 30);
             this.buttonSterge.TabIndex = 20;
             this.buttonSterge.Text = "Sterge";
-            this.buttonSterge.UseVisualStyleBackColor = true;
+            this.buttonSterge.UseVisualStyleBackColor = false;
             this.buttonSterge.Click += new System.EventHandler(this.buttonSterge_Click);
             // 
             // buttonSalvare
             // 
-            this.buttonSalvare.Location = new System.Drawing.Point(274, 201);
+            this.buttonSalvare.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(142)))), ((int)(((byte)(136)))));
+            this.buttonSalvare.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSalvare.Location = new System.Drawing.Point(265, 198);
             this.buttonSalvare.Name = "buttonSalvare";
-            this.buttonSalvare.Size = new System.Drawing.Size(75, 23);
+            this.buttonSalvare.Size = new System.Drawing.Size(140, 30);
             this.buttonSalvare.TabIndex = 19;
             this.buttonSalvare.Text = "Salveaza";
-            this.buttonSalvare.UseVisualStyleBackColor = true;
+            this.buttonSalvare.UseVisualStyleBackColor = false;
             this.buttonSalvare.Click += new System.EventHandler(this.buttonSalvare_Click);
             // 
             // buttonResetare
             // 
-            this.buttonResetare.Location = new System.Drawing.Point(304, 86);
+            this.buttonResetare.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(142)))), ((int)(((byte)(136)))));
+            this.buttonResetare.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonResetare.Location = new System.Drawing.Point(401, 83);
             this.buttonResetare.Name = "buttonResetare";
-            this.buttonResetare.Size = new System.Drawing.Size(151, 23);
+            this.buttonResetare.Size = new System.Drawing.Size(150, 30);
             this.buttonResetare.TabIndex = 22;
             this.buttonResetare.Text = "Resetare date initiale";
-            this.buttonResetare.UseVisualStyleBackColor = true;
+            this.buttonResetare.UseVisualStyleBackColor = false;
             this.buttonResetare.Click += new System.EventHandler(this.buttonResetare_Click);
             // 
             // MeniuMaterie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(467, 240);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(87)))), ((int)(((byte)(82)))));
+            this.ClientSize = new System.Drawing.Size(563, 240);
             this.Controls.Add(this.buttonResetare);
             this.Controls.Add(this.buttonSterge);
             this.Controls.Add(this.buttonSalvare);

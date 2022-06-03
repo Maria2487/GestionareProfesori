@@ -107,22 +107,22 @@ namespace NivelAccesDate
         public DataSet GetDetaliiCautaRepartizariNumeSauPrenume(string tip, string str)
         {
             var dsPrograme = SqlDBHelper.ExecuteDataSet($"SELECT P.idProfesor, P.nume AS numeProfesor, P.prenume, L.idLiceu, L.nume AS numeLiceu FROM {_NumeTabelProfesor} P, {_NumeTabelLiceu} L, {_NumeTabelRepartizare} R " +
-                                                          $"WHERE L.idLiceu = R.idLiceu AND P.idProfesor = R.idProfesor AND Upper(P.{tip}) like '{str.ToUpper()}%'", CommandType.Text);
-                                                          //new OracleParameter(":idLiceu", OracleDbType.Int32, l, ParameterDirection.Input));
+                                                          $"WHERE L.idLiceu = R.idLiceu AND P.idProfesor = R.idProfesor AND Upper(P.{tip}) like '%{str.ToUpper()}%'", CommandType.Text);
+            //new OracleParameter(":idLiceu", OracleDbType.Int32, l, ParameterDirection.Input));
             return dsPrograme;
         }
 
         public DataSet GetDetaliiCautaRepartizareNumeSiPrenume(string nume, string prenume)
         {
             var dsPrograme = SqlDBHelper.ExecuteDataSet($"SELECT P.idProfesor, P.nume AS numeProfesor, P.prenume, L.idLiceu, L.nume AS numeLiceu FROM {_NumeTabelProfesor} P, {_NumeTabelLiceu} L, {_NumeTabelRepartizare} R " +
-                                                          $"WHERE L.idLiceu = R.idLiceu AND P.idProfesor = R.idProfesor AND Upper(P.nume) like '{nume.ToUpper()}%' AND Upper(P.prenume) like '{prenume.ToUpper()}%' ", CommandType.Text);
-            
+                                                          $"WHERE L.idLiceu = R.idLiceu AND P.idProfesor = R.idProfesor AND Upper(P.nume) like '%{nume.ToUpper()}%' AND Upper(P.prenume) like '%{prenume.ToUpper()}%' ", CommandType.Text);
+
             return dsPrograme;
         }
         public DataSet GetDetaliiCautaRepartizare(int l, string nume, string prenume)
         {
             var dsPrograme = SqlDBHelper.ExecuteDataSet($"SELECT P.idProfesor, P.nume AS numeProfesor, P.prenume, L.idLiceu, L.nume AS numeLiceu FROM {_NumeTabelProfesor} P, {_NumeTabelLiceu} L, {_NumeTabelRepartizare} R " +
-                                                          $"WHERE L.idLiceu = R.idLiceu AND P.idProfesor = R.idProfesor AND Upper(P.nume) like '{nume.ToUpper()}%' AND Upper(P.prenume) like '{prenume.ToUpper()} AND L.idLiceu = :idLiceu", CommandType.Text,
+                                                          $"WHERE L.idLiceu = R.idLiceu AND P.idProfesor = R.idProfesor AND Upper(P.nume) like '%{nume.ToUpper()}%' AND Upper(P.prenume) like '%{prenume.ToUpper()} AND L.idLiceu = :idLiceu", CommandType.Text,
                                                             new OracleParameter(":idLiceu", OracleDbType.Int32, l, ParameterDirection.Input));
             return dsPrograme;
         }

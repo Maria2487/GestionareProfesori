@@ -19,11 +19,10 @@ namespace NivelAccesDate
         bool UpdateLiceu(Liceu l);
         bool DeleteLiceu(int l);
 
-        List<Liceu> GetProgrameStudii(List<CautaElement> searchElements);
-
         DataSet GetDetaliiLicee();
 
-        int CountLicee();
-        
+        DataSet GetDetaliiLiceeDupaDenumireSiOras(int o, string str);
+        DataSet GetDetaliiLiceeDupaDenumire(string str);
+
     }
 }

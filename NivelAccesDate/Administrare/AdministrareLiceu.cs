@@ -76,44 +76,27 @@ namespace NivelAccesDate
                     new OracleParameter(":idLiceu", OracleDbType.Int32, l, ParameterDirection.Input));
         }
 
-
-
-
-        public List<Liceu> GetProgrameStudii(List<CautaElement> searchElements)
-        {
-            var result = new List<Liceu>();
-            StringBuilder conditions = new StringBuilder();
-
-            foreach (var item in searchElements)
-            {
-                int number;
-                if (Int32.TryParse(item.Value, out number))
-                    conditions.Append($"{item.ColumnName} = {number} AND ");
-                else
-                    conditions.Append($"UPPER({item.ColumnName}) LIKE '%{item.Value.ToUpper()}%' AND ");
-            }
-
-            conditions = conditions.Remove(conditions.Length - 4, 3);
-            var ds = SqlDBHelper.ExecuteDataSet($"SELECT * FROM {_NumeTabelLiceu} WHERE {conditions}", CommandType.Text);
-
-            foreach (DataRow linieDB in ds.Tables[PRIMUL_TABEL].Rows)
-            {
-                result.Add(new Liceu(linieDB));
-            }
-            return result;
-        }
-
         public DataSet GetDetaliiLicee()
         {
             var dsPrograme = SqlDBHelper.ExecuteDataSet($"SELECT L.idLiceu, L.nume AS numeLiceu, O.idOras, O.nume AS numeOras FROM {_NumeTabelLiceu} L, {_NumeTabelOras} O WHERE L.idLiceu = idLiceu AND O.idOras = L.idOras", CommandType.Text);
             return dsPrograme;
         }
 
-        public int CountLicee()
+        public DataSet GetDetaliiLiceeDupaDenumireSiOras(int o, string str)
         {
-            int result;
-            //var resultat =  SqlDBHelper.ExecuteNonQuery($"SELECT COUNT(*) FROM {_NumeTabelLiceu}", CommandType.Text);
-            return result = -1;
+            var dsPrograme = SqlDBHelper.ExecuteDataSet($"SELECT L.idLiceu, L.nume AS numeLiceu, O.idOras, O.nume AS numeOras " +
+                                                        $"FROM {_NumeTabelLiceu} L, {_NumeTabelOras} O " +
+                                                        $"WHERE O.idOras = L.idOras AND L.idOras = :idOras AND L.nume like '%{str}%'", CommandType.Text,
+                                                        new OracleParameter(":idOras", OracleDbType.Int32, o, ParameterDirection.Input));
+            return dsPrograme;
+        }
+
+        public DataSet GetDetaliiLiceeDupaDenumire(string str)
+        {
+            var dsPrograme = SqlDBHelper.ExecuteDataSet($"SELECT L.idLiceu, L.nume AS numeLiceu, O.idOras, O.nume AS numeOras " +
+                                                        $"FROM {_NumeTabelLiceu} L, {_NumeTabelOras} O " +
+                                                        $"WHERE O.idOras = L.idOras AND L.nume like '%{str}%'", CommandType.Text);
+            return dsPrograme;
         }
     }
 }

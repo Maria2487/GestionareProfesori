@@ -18,6 +18,7 @@ namespace GestionareProfesori
         private const bool SUCCES = true;
         private const bool adOrModif = false;
         private  bool dinRepartizare = false;
+        public Profesor ProfesorGasit{ get; set; }
 
         IStocareLicee stocareLicee = (IStocareLicee)new StocareFactory().GetTipStocare(typeof(Liceu));
         IStocareMaterie stocareMaterii = (IStocareMaterie)new StocareFactory().GetTipStocare(typeof(Materie));
@@ -95,9 +96,9 @@ namespace GestionareProfesori
 
             if (dinRepartizare == true)
             {
-                this.Hide();
-                MeniuRepartizare meniuRepartizare = new MeniuRepartizare(true, null, getIdDataGrid());
-                
+                ProfesorGasit = stocareProfesori.GetProfesor(getIdDataGrid());
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
         }
 
@@ -159,6 +160,11 @@ namespace GestionareProfesori
             AfisareProfesori();
             txtNume.Text = String.Empty;
             txtPrenume.Text = String.Empty;
+        }
+
+        private void buttonInapoiLaMeniu_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

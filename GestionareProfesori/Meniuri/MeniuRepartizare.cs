@@ -19,10 +19,9 @@ namespace GestionareProfesori
         private const int ADOUA_COLOANA = 1;
         private const bool SUCCES = true;
         private bool esteAdauga;
-        private bool esteProfesorCautat = false;
         public bool itemAdaugat = false;
-        public Repartizare repartizareSelectata;
-        public int profesorDorit;
+        private Repartizare repartizareSelectata;
+        private Profesor profesorCautatDorit;
 
 
         IStocareLicee stocareLicee = (IStocareLicee)new StocareFactory().GetTipStocare(typeof(Liceu));
@@ -31,9 +30,10 @@ namespace GestionareProfesori
         IStocareProfesori stocareProfesori = (IStocareProfesori)new StocareFactory().GetTipStocare(typeof(Profesor));
         IStocareRepartizari stocareRepartizari = (IStocareRepartizari)new StocareFactory().GetTipStocare(typeof(Repartizare));
 
-        public MeniuRepartizare(bool esteAdauga, Repartizare repartizare = null, int IdProfesorSelectat = -1)
+        public MeniuRepartizare(bool esteAdauga, Repartizare repartizare = null, Profesor ProfesorCautatSelectat = null)
         {
             InitializeComponent();
+
             if (esteAdauga)
             {
                 buttonSterge.Visible = false;
@@ -54,7 +54,7 @@ namespace GestionareProfesori
 
             this.esteAdauga = esteAdauga;
             this.repartizareSelectata = repartizare;
-            this.profesorDorit = IdProfesorSelectat;
+            this.profesorCautatDorit = ProfesorCautatSelectat;
 
             IncarcaMeniuRepartizare();
         }
@@ -204,16 +204,10 @@ namespace GestionareProfesori
             {
                 try
                 {
-                    bool rezultat = false;
-                    if (esteProfesorCautat == false)
-                    {
-                        rezultat = stocareRepartizari.AddRepartizare(new Repartizare(profesorDorit, ((ComboItem)comboBoxLiceu.SelectedItem).Value));
-                    }
-                    if(esteProfesorCautat == true)
-                    {
-                        rezultat = stocareRepartizari.AddRepartizare(new Repartizare(profesorDorit, ((ComboItem)comboBoxLiceu.SelectedItem).Value));
-                    }
                     
+                    bool rezultat = false;
+                    rezultat = stocareRepartizari.AddRepartizare(new Repartizare(profesorCautatDorit.idProfesor, ((ComboItem)comboBoxLiceu.SelectedItem).Value));
+
                     if (rezultat == SUCCES)
                     {
                         MessageBox.Show("Repartizare adaugata");
@@ -266,8 +260,20 @@ namespace GestionareProfesori
         private void buttonCautaProfesor_Click(object sender, EventArgs e)
         {
             this.Hide();
-            CautaProfesor cautaPersoana = new CautaProfesor(true);
-            cautaPersoana.ShowDialog();
+            using (var form = new CautaProfesor(true))
+            {
+                var result = form.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    profesorCautatDorit = form.ProfesorGasit;
+                    txtNume.Text = profesorCautatDorit.nume;
+                    txtPrenume.Text = profesorCautatDorit.prenume;
+                    Materie m = stocareMaterii.GetMaterie(profesorCautatDorit.idMaterie);
+                    txtMaterie.Text = m.nume;
+                }
+            }
+            //CautaProfesor cautaPersoana = new CautaProfesor(true);
+            //cautaPersoana.ShowDialog();
             this.Show();
         }
 
@@ -278,12 +284,13 @@ namespace GestionareProfesori
             txtPrenume.Text = p.prenume;
             Materie m = stocareMaterii.GetMaterie(p.idMaterie);
             txtMaterie.Text = m.nume;
-            profesorDorit = p.idProfesor;
+            profesorCautatDorit = p;
         }
 
         private void buttonResetare_Click(object sender, EventArgs e)
         {
             IncarcaMeniuRepartizare();
         }
+
     }
 }

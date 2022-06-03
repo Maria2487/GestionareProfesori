@@ -45,7 +45,6 @@
     <Compile Include="Entitati\Profesor.cs" />
     <Compile Include="Entitati\Repartizare.cs" />
     <Compile Include="Helper\Afisari.cs" />
-    <Compile Include="Helper\CautaElement.cs" />
     <Compile Include="Helper\ComboItem.cs" />
     <Compile Include="Helper\Validari.cs" />
   </ItemGroup>

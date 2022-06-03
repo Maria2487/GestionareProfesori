@@ -28,6 +28,7 @@ namespace GestionareProfesori
         public CautaRepartizare()
         {
             InitializeComponent();
+            lblNumarProfesori.Visible = false;
             AfisareRepartizari();
             IncarcaLiceu();
         }
@@ -182,6 +183,16 @@ namespace GestionareProfesori
                 {
                     MessageBox.Show("Selectati un liceu sau completati cu numele si prenumele persoanei cautate");
                 }
+                if(dataGridView1.RowCount != 0)
+                {
+                    lblNumarProfesori.Text = dataGridView1.RowCount.ToString() + " inregistari gasite";
+                    lblNumarProfesori.Visible = true;
+                }
+                else
+                {
+                    lblNumarProfesori.Text = "nu s-au gasit inregistrari pentru datele propuse";
+                    lblNumarProfesori.Visible = true;
+                }
 
             }
             catch (Exception ex)
@@ -193,8 +204,14 @@ namespace GestionareProfesori
         private void buttonResetare_Click(object sender, EventArgs e)
         {
             comboBoxLiceu.ResetText();
+            lblNumarProfesori.Visible=false;
             AfisareRepartizari();
             IncarcaLiceu();
+        }
+
+        private void buttonInapoiLaMeniu_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

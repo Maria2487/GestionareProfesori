@@ -81,22 +81,24 @@
             // 
             // buttonSalvare
             // 
+            this.buttonSalvare.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(142)))), ((int)(((byte)(136)))));
             this.buttonSalvare.Location = new System.Drawing.Point(318, 285);
             this.buttonSalvare.Name = "buttonSalvare";
             this.buttonSalvare.Size = new System.Drawing.Size(75, 23);
             this.buttonSalvare.TabIndex = 17;
             this.buttonSalvare.Text = "Salveaza";
-            this.buttonSalvare.UseVisualStyleBackColor = true;
+            this.buttonSalvare.UseVisualStyleBackColor = false;
             this.buttonSalvare.Click += new System.EventHandler(this.buttonSalvare_Click);
             // 
             // buttonSterge
             // 
+            this.buttonSterge.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(142)))), ((int)(((byte)(136)))));
             this.buttonSterge.Location = new System.Drawing.Point(442, 285);
             this.buttonSterge.Name = "buttonSterge";
             this.buttonSterge.Size = new System.Drawing.Size(75, 23);
             this.buttonSterge.TabIndex = 18;
             this.buttonSterge.Text = "Sterge";
-            this.buttonSterge.UseVisualStyleBackColor = true;
+            this.buttonSterge.UseVisualStyleBackColor = false;
             this.buttonSterge.Click += new System.EventHandler(this.buttonSterge_Click);
             // 
             // lblMaterie
@@ -110,18 +112,20 @@
             // 
             // buttonResetare
             // 
+            this.buttonResetare.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(142)))), ((int)(((byte)(136)))));
             this.buttonResetare.Location = new System.Drawing.Point(371, 105);
             this.buttonResetare.Name = "buttonResetare";
             this.buttonResetare.Size = new System.Drawing.Size(131, 23);
             this.buttonResetare.TabIndex = 20;
             this.buttonResetare.Text = "Resetare date initiale";
-            this.buttonResetare.UseVisualStyleBackColor = true;
+            this.buttonResetare.UseVisualStyleBackColor = false;
             this.buttonResetare.Click += new System.EventHandler(this.buttonResetare_Click);
             // 
             // MeniuProfesor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(87)))), ((int)(((byte)(82)))));
             this.ClientSize = new System.Drawing.Size(528, 324);
             this.Controls.Add(this.buttonResetare);
             this.Controls.Add(this.lblMaterie);

@@ -28,6 +28,7 @@ namespace GestionareProfesori
         public MeniuPrincipal()
         {
             InitializeComponent();
+            labelInformatiiPrincipal.Visible = true;
             panelAdauga.Visible = false;
             panelInformatii.Visible = false;
         }
@@ -141,14 +142,10 @@ namespace GestionareProfesori
 
         private void ResetarePagina()
         {
-            dataGridView1.Rows.Clear();
-            foreach(Control p in this.Controls)
-            {
-                if (p is RadioButton && ((RadioButton)p).Checked == true)
-                {
-                    ((RadioButton)p).Checked = false;
-                }
-            }
+            dataGridView1.DataSource = null;
+            radioButtonNumarLiceeExistente.Checked = false;
+            radioButtonNumarProfesoriExistenti.Checked = false;
+            radioButtonNumarMaterii.Checked = false;
         }
 
         private void buttonResetare_Click(object sender, EventArgs e)
@@ -160,18 +157,77 @@ namespace GestionareProfesori
         {
             if(radioButtonNumarLiceeExistente.Checked == true)
             {
-                
+                try
+                {
+                    var licee = stocareLicee.GetDetaliiLicee();
+                    if (licee != null)
+                    {
+
+                        dataGridView1.DataSource = licee.Tables[0];
+
+                        dataGridView1.Columns["idLiceu"].Visible = false;
+                        dataGridView1.Columns["numeLiceu"].HeaderText = "Liceu";
+                        dataGridView1.Columns["idOras"].Visible = false;
+                        dataGridView1.Columns["numeOras"].HeaderText = "Oras";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
             }
 
-            if (radioButtonNumarProfesoriExistenti.Checked == true)
+            else if (radioButtonNumarProfesoriExistenti.Checked == true)
             {
+                try
+                {
+                    var profesori = stocareProfesori.GetDetaliiProfesori();
+                    if (profesori != null)
+                    {
 
+                        dataGridView1.DataSource = profesori.Tables[0];
+
+                        dataGridView1.Columns["idProfesor"].Visible = false;
+                        dataGridView1.Columns["numeProfesor"].HeaderText = "Nume";
+                        dataGridView1.Columns["prenume"].HeaderText = "Prenume";
+                        dataGridView1.Columns["idMaterie"].Visible = false;
+                        dataGridView1.Columns["numeMaterie"].HeaderText = "Materie";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
             }
 
-            if (radioButtonNumarMaterii.Checked == true)
+            else if (radioButtonNumarMaterii.Checked == true)
             {
+                try
+                {
+                    var materie = stocareMaterii.GetMaterii();
+                    if (materie != null && materie.Any())
+                    {
+                        dataGridView1.DataSource = materie.Select(m => new { m.idMaterie, m.nume }).ToList();
 
+                        dataGridView1.Columns["idMaterie"].Visible = false;
+                        dataGridView1.Columns["nume"].HeaderText = "Materie";
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
             }
+            else
+            {
+                MessageBox.Show("Selectati una dintre optiuni");
+            }
+        }
+
+        private void dataGridView1_DataSourceChanged(object sender, EventArgs e)
+        {
+            labelInformatiiPrincipal.Text = $"Inregistrari: {dataGridView1.RowCount}";
         }
     }
 }

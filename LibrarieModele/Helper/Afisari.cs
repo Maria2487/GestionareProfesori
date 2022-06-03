@@ -8,5 +8,6 @@ namespace LibrarieModele
 {
     public static class Afisari
     {
+
     }
 }
