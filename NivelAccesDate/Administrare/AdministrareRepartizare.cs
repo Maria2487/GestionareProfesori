@@ -85,7 +85,7 @@ namespace NivelAccesDate
         #region Pentru Afisari
         public DataSet GetDetaliiRepartizari()
         {
-            var dsPrograme = SqlDBHelper.ExecuteDataSet($"SELECT P.idProfesor, P.nume AS numeProfesor, P.prenume, L.nume AS numeLiceu, M.idMaterie, M.nume AS numeMaterie, L.idLiceu, O.idOras, O.nume AS numeOras " +
+            var dsPrograme = SqlDBHelper.ExecuteDataSet($"SELECT P.idProfesor, P.nume AS numeProfesor, P.prenume, L.idLiceu, L.nume AS numeLiceu, M.idMaterie, M.nume AS numeMaterie, O.idOras, O.nume AS numeOras " +
                                                         $"FROM {_NumeTabelProfesor} P, {_NumeTabelMaterii} M, {_NumeTabelRepartizare} R, {_NumeTabelLiceu} L, {_NumeTabelOras} O " + 
                                                         $"WHERE P.idMaterie = M.idMaterie AND L.idOras = O.idOras AND P.idProfesor = R.idProfesor AND R.idLiceu = L.idLiceu", CommandType.Text);
             return dsPrograme;

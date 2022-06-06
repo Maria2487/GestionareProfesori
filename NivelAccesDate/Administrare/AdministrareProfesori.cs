@@ -74,9 +74,9 @@ namespace NivelAccesDate
 
 
         #region Pentru Afisari
-        public DataSet GetDetaliiProfesori()
+        public DataSet GetDetaliiProfesori(string str1 = "", string str2 = "")
         {
-            var dsPrograme = SqlDBHelper.ExecuteDataSet($"SELECT P.idProfesor, P.nume AS numeProfesor, P.prenume, M.idMaterie, M.nume AS numeMaterie FROM {_NumeTabelProfesor} P, {_NumeTabelMaterii} M WHERE P.idMaterie = M.idMaterie", CommandType.Text);
+            var dsPrograme = SqlDBHelper.ExecuteDataSet($"SELECT P.idProfesor, P.nume AS numeProfesor, P.prenume, M.idMaterie, M.nume AS numeMaterie FROM {_NumeTabelProfesor} P, {_NumeTabelMaterii} M WHERE P.idMaterie = M.idMaterie AND UPPER(P.nume) like '%{str1.ToUpper()}%' AND UPPER(P.prenume) like '%{str2.ToUpper()}%'", CommandType.Text);
             return dsPrograme;
         }
         #endregion

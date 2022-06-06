@@ -17,6 +17,6 @@ namespace NivelAccesDate
         List<Profesor> GetProfesori();
        
 
-        DataSet GetDetaliiProfesori();
+        DataSet GetDetaliiProfesori(string str1 = "", string str2 = "");
     }
 }

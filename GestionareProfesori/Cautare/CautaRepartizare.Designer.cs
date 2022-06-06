@@ -169,7 +169,7 @@
             // 
             this.lblNumarProfesori.AutoSize = true;
             this.lblNumarProfesori.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(246)))), ((int)(((byte)(201)))));
-            this.lblNumarProfesori.Location = new System.Drawing.Point(14, 191);
+            this.lblNumarProfesori.Location = new System.Drawing.Point(14, 181);
             this.lblNumarProfesori.Name = "lblNumarProfesori";
             this.lblNumarProfesori.Size = new System.Drawing.Size(0, 13);
             this.lblNumarProfesori.TabIndex = 29;

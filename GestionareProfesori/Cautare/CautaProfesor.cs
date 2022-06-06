@@ -20,12 +20,8 @@ namespace GestionareProfesori
         private  bool dinRepartizare = false;
         public Profesor ProfesorGasit{ get; set; }
 
-        IStocareLicee stocareLicee = (IStocareLicee)new StocareFactory().GetTipStocare(typeof(Liceu));
-        IStocareMaterie stocareMaterii = (IStocareMaterie)new StocareFactory().GetTipStocare(typeof(Materie));
-        IStocareOrase stocareOrase = (IStocareOrase)new StocareFactory().GetTipStocare(typeof(Oras));
         IStocareProfesori stocareProfesori = (IStocareProfesori)new StocareFactory().GetTipStocare(typeof(Profesor));
-        IStocareRepartizari stocareRepartizari = (IStocareRepartizari)new StocareFactory().GetTipStocare(typeof(Repartizare));
-
+        
         public CautaProfesor(bool mRepartizare = false)
         {
             InitializeComponent();
@@ -106,47 +102,17 @@ namespace GestionareProfesori
         {
             try
             {
-                var profesori = stocareProfesori.GetProfesori();
-                if (profesori != null && profesori.Any())
+                var profesori = stocareProfesori.GetDetaliiProfesori(txtNume.Text,txtPrenume.Text);
+                if (profesori != null)
                 {
-                    if (txtNume.Text != String.Empty && txtPrenume.Text != String.Empty)
-                    {
-                        dataGridView1.DataSource = profesori.Where(p => p.nume.ToUpper() == txtNume.Text.ToUpper() && p.prenume.ToUpper() == txtPrenume.Text.ToUpper())
-                                                        .Select(p => new { p.idProfesor, p.nume, p.prenume, p.idMaterie }).ToList();
 
-                        dataGridView1.Columns["idProfesor"].Visible = false;
-                        dataGridView1.Columns["nume"].HeaderText = "Nume";
-                        dataGridView1.Columns["prenume"].HeaderText = "Prenume";
-                        dataGridView1.Columns["idMaterie"].HeaderText = "Materie";
-                    }
+                    dataGridView1.DataSource = profesori.Tables[0];
 
-                    if (txtNume.Text != String.Empty)
-                    {
-                        dataGridView1.DataSource = profesori.Where(p => p.nume.ToUpper() == txtNume.Text.ToUpper())
-                                                        .Select(p => new { p.idProfesor, p.nume, p.prenume, p.idMaterie }).ToList();
-
-                        dataGridView1.Columns["idProfesor"].Visible = false;
-                        dataGridView1.Columns["nume"].HeaderText = "Nume";
-                        dataGridView1.Columns["prenume"].HeaderText = "Prenume";
-                        dataGridView1.Columns["idMaterie"].HeaderText = "Materie";
-                    }
-
-                    if (txtPrenume.Text != String.Empty)
-                    {
-                        dataGridView1.DataSource = profesori.Where(p => p.prenume.ToUpper() == txtPrenume.Text.ToUpper())
-                                                        .Select(p => new { p.idProfesor, p.nume, p.prenume, p.idMaterie }).ToList();
-
-                        dataGridView1.Columns["idProfesor"].Visible = false;
-                        dataGridView1.Columns["nume"].HeaderText = "Nume";
-                        dataGridView1.Columns["prenume"].HeaderText = "Prenume";
-                        dataGridView1.Columns["idMaterie"].HeaderText = "Materie";
-                    }
-
-                    if(txtNume.Text == String.Empty && txtPrenume.Text == String.Empty)
-                    {
-                        MessageBox.Show("Introduceti numele/prenumele profesorului cautat");
-                    }
-
+                    dataGridView1.Columns["idProfesor"].Visible = false;
+                    dataGridView1.Columns["numeProfesor"].HeaderText = "Nume";
+                    dataGridView1.Columns["prenume"].HeaderText = "Prenume";
+                    dataGridView1.Columns["idMaterie"].Visible = false;
+                    dataGridView1.Columns["numeMaterie"].HeaderText = "Materie";
                 }
             }
             catch (Exception ex)
