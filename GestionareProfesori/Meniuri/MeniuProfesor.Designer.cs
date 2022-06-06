@@ -41,14 +41,14 @@
             // 
             // txtNume
             // 
-            this.txtNume.Location = new System.Drawing.Point(152, 44);
+            this.txtNume.Location = new System.Drawing.Point(174, 46);
             this.txtNume.Name = "txtNume";
             this.txtNume.Size = new System.Drawing.Size(176, 20);
             this.txtNume.TabIndex = 2;
             // 
             // txtPrenume
             // 
-            this.txtPrenume.Location = new System.Drawing.Point(149, 102);
+            this.txtPrenume.Location = new System.Drawing.Point(174, 102);
             this.txtPrenume.Name = "txtPrenume";
             this.txtPrenume.Size = new System.Drawing.Size(176, 20);
             this.txtPrenume.TabIndex = 3;
@@ -56,7 +56,7 @@
             // comboBoxMaterie
             // 
             this.comboBoxMaterie.FormattingEnabled = true;
-            this.comboBoxMaterie.Location = new System.Drawing.Point(152, 170);
+            this.comboBoxMaterie.Location = new System.Drawing.Point(174, 172);
             this.comboBoxMaterie.Name = "comboBoxMaterie";
             this.comboBoxMaterie.Size = new System.Drawing.Size(176, 21);
             this.comboBoxMaterie.TabIndex = 4;
@@ -64,27 +64,30 @@
             // lblNume
             // 
             this.lblNume.AutoSize = true;
-            this.lblNume.Location = new System.Drawing.Point(67, 44);
+            this.lblNume.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNume.Location = new System.Drawing.Point(37, 39);
             this.lblNume.Name = "lblNume";
-            this.lblNume.Size = new System.Drawing.Size(35, 13);
+            this.lblNume.Size = new System.Drawing.Size(78, 29);
             this.lblNume.TabIndex = 5;
             this.lblNume.Text = "Nume";
             // 
             // lblPrenume
             // 
             this.lblPrenume.AutoSize = true;
-            this.lblPrenume.Location = new System.Drawing.Point(67, 105);
+            this.lblPrenume.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrenume.Location = new System.Drawing.Point(37, 100);
             this.lblPrenume.Name = "lblPrenume";
-            this.lblPrenume.Size = new System.Drawing.Size(49, 13);
+            this.lblPrenume.Size = new System.Drawing.Size(111, 29);
             this.lblPrenume.TabIndex = 6;
             this.lblPrenume.Text = "Prenume";
             // 
             // buttonSalvare
             // 
             this.buttonSalvare.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(142)))), ((int)(((byte)(136)))));
-            this.buttonSalvare.Location = new System.Drawing.Point(318, 285);
+            this.buttonSalvare.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSalvare.Location = new System.Drawing.Point(376, 282);
             this.buttonSalvare.Name = "buttonSalvare";
-            this.buttonSalvare.Size = new System.Drawing.Size(75, 23);
+            this.buttonSalvare.Size = new System.Drawing.Size(140, 30);
             this.buttonSalvare.TabIndex = 17;
             this.buttonSalvare.Text = "Salveaza";
             this.buttonSalvare.UseVisualStyleBackColor = false;
@@ -93,9 +96,10 @@
             // buttonSterge
             // 
             this.buttonSterge.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(142)))), ((int)(((byte)(136)))));
-            this.buttonSterge.Location = new System.Drawing.Point(442, 285);
+            this.buttonSterge.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSterge.Location = new System.Drawing.Point(230, 282);
             this.buttonSterge.Name = "buttonSterge";
-            this.buttonSterge.Size = new System.Drawing.Size(75, 23);
+            this.buttonSterge.Size = new System.Drawing.Size(140, 30);
             this.buttonSterge.TabIndex = 18;
             this.buttonSterge.Text = "Sterge";
             this.buttonSterge.UseVisualStyleBackColor = false;
@@ -104,18 +108,20 @@
             // lblMaterie
             // 
             this.lblMaterie.AutoSize = true;
-            this.lblMaterie.Location = new System.Drawing.Point(70, 177);
+            this.lblMaterie.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMaterie.Location = new System.Drawing.Point(37, 164);
             this.lblMaterie.Name = "lblMaterie";
-            this.lblMaterie.Size = new System.Drawing.Size(42, 13);
+            this.lblMaterie.Size = new System.Drawing.Size(94, 29);
             this.lblMaterie.TabIndex = 19;
             this.lblMaterie.Text = "Materie";
             // 
             // buttonResetare
             // 
             this.buttonResetare.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(142)))), ((int)(((byte)(136)))));
-            this.buttonResetare.Location = new System.Drawing.Point(371, 105);
+            this.buttonResetare.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonResetare.Location = new System.Drawing.Point(376, 96);
             this.buttonResetare.Name = "buttonResetare";
-            this.buttonResetare.Size = new System.Drawing.Size(131, 23);
+            this.buttonResetare.Size = new System.Drawing.Size(140, 30);
             this.buttonResetare.TabIndex = 20;
             this.buttonResetare.Text = "Resetare date initiale";
             this.buttonResetare.UseVisualStyleBackColor = false;

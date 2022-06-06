@@ -79,7 +79,7 @@
             // 
             this.buttonSterge.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(142)))), ((int)(((byte)(136)))));
             this.buttonSterge.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSterge.Location = new System.Drawing.Point(507, 222);
+            this.buttonSterge.Location = new System.Drawing.Point(361, 222);
             this.buttonSterge.Name = "buttonSterge";
             this.buttonSterge.Size = new System.Drawing.Size(140, 30);
             this.buttonSterge.TabIndex = 20;
@@ -91,7 +91,7 @@
             // 
             this.buttonSalvare.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(142)))), ((int)(((byte)(136)))));
             this.buttonSalvare.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSalvare.Location = new System.Drawing.Point(361, 222);
+            this.buttonSalvare.Location = new System.Drawing.Point(507, 222);
             this.buttonSalvare.Name = "buttonSalvare";
             this.buttonSalvare.Size = new System.Drawing.Size(140, 30);
             this.buttonSalvare.TabIndex = 19;
@@ -103,7 +103,7 @@
             // 
             this.buttonResetare.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(142)))), ((int)(((byte)(136)))));
             this.buttonResetare.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonResetare.Location = new System.Drawing.Point(497, 102);
+            this.buttonResetare.Location = new System.Drawing.Point(497, 115);
             this.buttonResetare.Name = "buttonResetare";
             this.buttonResetare.Size = new System.Drawing.Size(150, 30);
             this.buttonResetare.TabIndex = 21;

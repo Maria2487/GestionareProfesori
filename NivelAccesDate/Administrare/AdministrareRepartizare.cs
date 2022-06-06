@@ -1,9 +1,5 @@
 ﻿using LibrarieModele;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Oracle.DataAccess.Client;
 using System.Data;
 using System.Configuration;
@@ -14,15 +10,13 @@ namespace NivelAccesDate
     {
         private const int PRIMUL_TABEL = 0;
         private const int PRIMA_LINIE = 0;
+
         private readonly string _NumeTabelLiceu = ConfigurationManager.AppSettings.Get("K_NumeTabelLiceu");
         private readonly string _NumeTabelMaterii = ConfigurationManager.AppSettings.Get("K_NumeTabelMaterii");
         private readonly string _NumeTabelOras = ConfigurationManager.AppSettings.Get("K_NumeTabelOras");
         private readonly string _NumeTabelProfesor = ConfigurationManager.AppSettings.Get("K_NumeTabelProfesor");
         private readonly string _NumeTabelRepartizare = ConfigurationManager.AppSettings.Get("K_NumeTabelRepartizare");
-        private readonly string _SecventaTabelLiceu = ConfigurationManager.AppSettings.Get("K_SecventaTabelLiceu");
-        private readonly string _SecventaTabelMaterie = ConfigurationManager.AppSettings.Get("K_SecventaTabelMaterie");
-        private readonly string _SecventaTabelOras = ConfigurationManager.AppSettings.Get("K_SecventaTabelOras");
-        private readonly string _SecventaTabelProfesor = ConfigurationManager.AppSettings.Get("K_SecventaTabelProfesor");
+
 
         public bool AddRepartizare(Repartizare r)
         {
@@ -31,34 +25,6 @@ namespace NivelAccesDate
                 new OracleParameter(":idProfesor", OracleDbType.Int32, r.idProfesor, ParameterDirection.Input),
                 new OracleParameter(":idLiceu", OracleDbType.Int32, r.idLiceu, ParameterDirection.Input));
         }
-
-        public Repartizare GetRepartizare(int idP, int idL)
-        {
-            Repartizare result = null;
-            var dsRepartizari = SqlDBHelper.ExecuteDataSet($"select * from {_NumeTabelRepartizare} where idProfesor = :idProfesor AND idLiceu = :idLiceu", CommandType.Text,
-                new OracleParameter(":idProfesor", OracleDbType.Int32, idP, ParameterDirection.Input),
-                new OracleParameter(":idLiceu", OracleDbType.Int32, idL, ParameterDirection.Input));
-
-            if (dsRepartizari.Tables[PRIMUL_TABEL].Rows.Count > 0)
-            {
-                DataRow linieDB = dsRepartizari.Tables[PRIMUL_TABEL].Rows[PRIMA_LINIE];
-                result = new Repartizare(linieDB);
-            }
-            return result;
-        }
-
-        public List<Repartizare> GetRepartizari()
-        {
-            var result = new List<Repartizare>();
-            var dsRepartizari = SqlDBHelper.ExecuteDataSet($"select * from {_NumeTabelRepartizare}", CommandType.Text);
-
-            foreach (DataRow linieDB in dsRepartizari.Tables[PRIMUL_TABEL].Rows)
-            {
-                result.Add(new Repartizare(linieDB));
-            }
-            return result;
-        }
-
         public bool UpdateRepartizare(Repartizare r, int idLiceuVechi)
         {
             return SqlDBHelper.ExecuteNonQuery(
@@ -67,7 +33,6 @@ namespace NivelAccesDate
                 new OracleParameter(":idProfesor", OracleDbType.Int32, r.idProfesor, ParameterDirection.Input),
                 new OracleParameter(":idLiceuVechi", OracleDbType.Int32, idLiceuVechi, ParameterDirection.Input));
         }
-
         public bool DeleteRepartizarePentruLiceu(int idLiceu)
         {
             return SqlDBHelper.ExecuteNonQuery(
@@ -89,6 +54,35 @@ namespace NivelAccesDate
                     );
         }
 
+
+        public Repartizare GetRepartizare(int idP, int idL)
+        {
+            Repartizare result = null;
+            var dsRepartizari = SqlDBHelper.ExecuteDataSet($"select * from {_NumeTabelRepartizare} where idProfesor = :idProfesor AND idLiceu = :idLiceu", CommandType.Text,
+                new OracleParameter(":idProfesor", OracleDbType.Int32, idP, ParameterDirection.Input),
+                new OracleParameter(":idLiceu", OracleDbType.Int32, idL, ParameterDirection.Input));
+
+            if (dsRepartizari.Tables[PRIMUL_TABEL].Rows.Count > 0)
+            {
+                DataRow linieDB = dsRepartizari.Tables[PRIMUL_TABEL].Rows[PRIMA_LINIE];
+                result = new Repartizare(linieDB);
+            }
+            return result;
+        }
+        public List<Repartizare> GetRepartizari()
+        {
+            var result = new List<Repartizare>();
+            var dsRepartizari = SqlDBHelper.ExecuteDataSet($"select * from {_NumeTabelRepartizare}", CommandType.Text);
+
+            foreach (DataRow linieDB in dsRepartizari.Tables[PRIMUL_TABEL].Rows)
+            {
+                result.Add(new Repartizare(linieDB));
+            }
+            return result;
+        }
+
+
+        #region Pentru Afisari
         public DataSet GetDetaliiRepartizari()
         {
             var dsPrograme = SqlDBHelper.ExecuteDataSet($"SELECT P.idProfesor, P.nume AS numeProfesor, P.prenume, L.nume AS numeLiceu, M.idMaterie, M.nume AS numeMaterie, L.idLiceu, O.idOras, O.nume AS numeOras " +
@@ -104,11 +98,11 @@ namespace NivelAccesDate
                                                           new OracleParameter(":idLiceu", OracleDbType.Int32, l, ParameterDirection.Input));
             return dsPrograme;
         }
+        
         public DataSet GetDetaliiCautaRepartizariNumeSauPrenume(string tip, string str)
         {
             var dsPrograme = SqlDBHelper.ExecuteDataSet($"SELECT P.idProfesor, P.nume AS numeProfesor, P.prenume, L.idLiceu, L.nume AS numeLiceu FROM {_NumeTabelProfesor} P, {_NumeTabelLiceu} L, {_NumeTabelRepartizare} R " +
                                                           $"WHERE L.idLiceu = R.idLiceu AND P.idProfesor = R.idProfesor AND Upper(P.{tip}) like '%{str.ToUpper()}%'", CommandType.Text);
-            //new OracleParameter(":idLiceu", OracleDbType.Int32, l, ParameterDirection.Input));
             return dsPrograme;
         }
 
@@ -119,6 +113,7 @@ namespace NivelAccesDate
 
             return dsPrograme;
         }
+        
         public DataSet GetDetaliiCautaRepartizare(int l, string nume, string prenume)
         {
             var dsPrograme = SqlDBHelper.ExecuteDataSet($"SELECT P.idProfesor, P.nume AS numeProfesor, P.prenume, L.idLiceu, L.nume AS numeLiceu FROM {_NumeTabelProfesor} P, {_NumeTabelLiceu} L, {_NumeTabelRepartizare} R " +
@@ -126,6 +121,8 @@ namespace NivelAccesDate
                                                             new OracleParameter(":idLiceu", OracleDbType.Int32, l, ParameterDirection.Input));
             return dsPrograme;
         }
+        #endregion
+    
     }
 
 }

@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MeniuPrincipal));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelPrincipalUp = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labelTitluProiect = new System.Windows.Forms.Label();
             this.PanelPrincipalLeft = new System.Windows.Forms.Panel();
             this.buttonInformatii = new System.Windows.Forms.Button();
@@ -37,6 +39,7 @@
             this.buttonAdauga = new System.Windows.Forms.Button();
             this.PanelPrincipalCenter = new System.Windows.Forms.Panel();
             this.panelInformatii = new System.Windows.Forms.Panel();
+            this.labelInformatiiPrincipal = new System.Windows.Forms.Label();
             this.labelInformatii = new System.Windows.Forms.Label();
             this.buttonRaspuns = new System.Windows.Forms.Button();
             this.buttonResetare = new System.Windows.Forms.Button();
@@ -50,9 +53,8 @@
             this.buttonLiceu = new System.Windows.Forms.Button();
             this.buttonMaterie = new System.Windows.Forms.Button();
             this.buttonPersoana = new System.Windows.Forms.Button();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.labelInformatiiPrincipal = new System.Windows.Forms.Label();
             this.PanelPrincipalUp.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.PanelPrincipalLeft.SuspendLayout();
             this.PanelPrincipalCenter.SuspendLayout();
             this.panelInformatii.SuspendLayout();
@@ -64,18 +66,29 @@
             // PanelPrincipalUp
             // 
             this.PanelPrincipalUp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(126)))), ((int)(((byte)(105)))));
+            this.PanelPrincipalUp.Controls.Add(this.pictureBox1);
             this.PanelPrincipalUp.Controls.Add(this.labelTitluProiect);
             this.PanelPrincipalUp.Location = new System.Drawing.Point(-1, 1);
             this.PanelPrincipalUp.Name = "PanelPrincipalUp";
-            this.PanelPrincipalUp.Size = new System.Drawing.Size(941, 70);
+            this.PanelPrincipalUp.Size = new System.Drawing.Size(941, 158);
             this.PanelPrincipalUp.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(32, 8);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(192, 150);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
             // 
             // labelTitluProiect
             // 
             this.labelTitluProiect.AutoSize = true;
             this.labelTitluProiect.Font = new System.Drawing.Font("Microsoft Sans Serif", 27F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTitluProiect.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(246)))), ((int)(((byte)(201)))));
-            this.labelTitluProiect.Location = new System.Drawing.Point(351, 17);
+            this.labelTitluProiect.Location = new System.Drawing.Point(418, 26);
             this.labelTitluProiect.Name = "labelTitluProiect";
             this.labelTitluProiect.Size = new System.Drawing.Size(367, 40);
             this.labelTitluProiect.TabIndex = 12;
@@ -87,16 +100,16 @@
             this.PanelPrincipalLeft.Controls.Add(this.buttonInformatii);
             this.PanelPrincipalLeft.Controls.Add(this.buttonModifica);
             this.PanelPrincipalLeft.Controls.Add(this.buttonAdauga);
-            this.PanelPrincipalLeft.Location = new System.Drawing.Point(-1, 70);
+            this.PanelPrincipalLeft.Location = new System.Drawing.Point(-1, 157);
             this.PanelPrincipalLeft.Name = "PanelPrincipalLeft";
-            this.PanelPrincipalLeft.Size = new System.Drawing.Size(260, 500);
+            this.PanelPrincipalLeft.Size = new System.Drawing.Size(260, 413);
             this.PanelPrincipalLeft.TabIndex = 1;
             // 
             // buttonInformatii
             // 
             this.buttonInformatii.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(142)))), ((int)(((byte)(136)))));
             this.buttonInformatii.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonInformatii.Location = new System.Drawing.Point(13, 363);
+            this.buttonInformatii.Location = new System.Drawing.Point(13, 314);
             this.buttonInformatii.Name = "buttonInformatii";
             this.buttonInformatii.Size = new System.Drawing.Size(230, 70);
             this.buttonInformatii.TabIndex = 2;
@@ -108,7 +121,7 @@
             // 
             this.buttonModifica.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(142)))), ((int)(((byte)(136)))));
             this.buttonModifica.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonModifica.Location = new System.Drawing.Point(13, 216);
+            this.buttonModifica.Location = new System.Drawing.Point(13, 157);
             this.buttonModifica.Name = "buttonModifica";
             this.buttonModifica.Size = new System.Drawing.Size(230, 70);
             this.buttonModifica.TabIndex = 1;
@@ -120,7 +133,7 @@
             // 
             this.buttonAdauga.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(142)))), ((int)(((byte)(136)))));
             this.buttonAdauga.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAdauga.Location = new System.Drawing.Point(13, 63);
+            this.buttonAdauga.Location = new System.Drawing.Point(13, 6);
             this.buttonAdauga.Name = "buttonAdauga";
             this.buttonAdauga.Size = new System.Drawing.Size(230, 70);
             this.buttonAdauga.TabIndex = 0;
@@ -152,6 +165,15 @@
             this.panelInformatii.Name = "panelInformatii";
             this.panelInformatii.Size = new System.Drawing.Size(664, 470);
             this.panelInformatii.TabIndex = 4;
+            // 
+            // labelInformatiiPrincipal
+            // 
+            this.labelInformatiiPrincipal.AutoSize = true;
+            this.labelInformatiiPrincipal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(246)))), ((int)(((byte)(201)))));
+            this.labelInformatiiPrincipal.Location = new System.Drawing.Point(17, 170);
+            this.labelInformatiiPrincipal.Name = "labelInformatiiPrincipal";
+            this.labelInformatiiPrincipal.Size = new System.Drawing.Size(0, 17);
+            this.labelInformatiiPrincipal.TabIndex = 24;
             // 
             // labelInformatii
             // 
@@ -192,14 +214,14 @@
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(87)))), ((int)(((byte)(82)))));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(126)))), ((int)(((byte)(105)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(126)))), ((int)(((byte)(105)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.Location = new System.Drawing.Point(13, 190);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(638, 266);
@@ -313,15 +335,6 @@
             this.buttonPersoana.UseVisualStyleBackColor = false;
             this.buttonPersoana.Click += new System.EventHandler(this.buttonPersoana_Click);
             // 
-            // labelInformatiiPrincipal
-            // 
-            this.labelInformatiiPrincipal.AutoSize = true;
-            this.labelInformatiiPrincipal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(246)))), ((int)(((byte)(201)))));
-            this.labelInformatiiPrincipal.Location = new System.Drawing.Point(17, 170);
-            this.labelInformatiiPrincipal.Name = "labelInformatiiPrincipal";
-            this.labelInformatiiPrincipal.Size = new System.Drawing.Size(0, 17);
-            this.labelInformatiiPrincipal.TabIndex = 24;
-            // 
             // MeniuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -335,6 +348,7 @@
             this.Text = "Meniu Principal";
             this.PanelPrincipalUp.ResumeLayout(false);
             this.PanelPrincipalUp.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.PanelPrincipalLeft.ResumeLayout(false);
             this.PanelPrincipalCenter.ResumeLayout(false);
             this.panelInformatii.ResumeLayout(false);
@@ -358,7 +372,6 @@
         private System.Windows.Forms.Button buttonLiceu;
         private System.Windows.Forms.Button buttonMaterie;
         private System.Windows.Forms.Button buttonPersoana;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button buttonInformatii;
         private System.Windows.Forms.Button buttonRepartizare;
         private System.Windows.Forms.Panel panelInformatii;
@@ -372,6 +385,7 @@
         private System.Windows.Forms.Label labelInformatii;
         private System.Windows.Forms.Label labelTitluProiect;
         private System.Windows.Forms.Label labelInformatiiPrincipal;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

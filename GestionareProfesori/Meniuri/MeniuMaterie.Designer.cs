@@ -56,7 +56,7 @@
             // 
             this.buttonSterge.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(142)))), ((int)(((byte)(136)))));
             this.buttonSterge.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSterge.Location = new System.Drawing.Point(411, 198);
+            this.buttonSterge.Location = new System.Drawing.Point(213, 198);
             this.buttonSterge.Name = "buttonSterge";
             this.buttonSterge.Size = new System.Drawing.Size(140, 30);
             this.buttonSterge.TabIndex = 20;
@@ -68,7 +68,7 @@
             // 
             this.buttonSalvare.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(142)))), ((int)(((byte)(136)))));
             this.buttonSalvare.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSalvare.Location = new System.Drawing.Point(265, 198);
+            this.buttonSalvare.Location = new System.Drawing.Point(359, 198);
             this.buttonSalvare.Name = "buttonSalvare";
             this.buttonSalvare.Size = new System.Drawing.Size(140, 30);
             this.buttonSalvare.TabIndex = 19;
@@ -80,7 +80,7 @@
             // 
             this.buttonResetare.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(142)))), ((int)(((byte)(136)))));
             this.buttonResetare.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonResetare.Location = new System.Drawing.Point(401, 83);
+            this.buttonResetare.Location = new System.Drawing.Point(349, 84);
             this.buttonResetare.Name = "buttonResetare";
             this.buttonResetare.Size = new System.Drawing.Size(150, 30);
             this.buttonResetare.TabIndex = 22;
@@ -93,7 +93,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(87)))), ((int)(((byte)(82)))));
-            this.ClientSize = new System.Drawing.Size(563, 240);
+            this.ClientSize = new System.Drawing.Size(508, 240);
             this.Controls.Add(this.buttonResetare);
             this.Controls.Add(this.buttonSterge);
             this.Controls.Add(this.buttonSalvare);

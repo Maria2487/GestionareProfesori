@@ -229,5 +229,6 @@ namespace GestionareProfesori
         {
             labelInformatiiPrincipal.Text = $"Inregistrari: {dataGridView1.RowCount}";
         }
+
     }
 }

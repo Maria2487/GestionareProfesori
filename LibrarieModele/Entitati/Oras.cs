@@ -12,13 +12,14 @@ namespace LibrarieModele
         public int idOras { get; set; }
         public string nume { get; set; }
 
+
+        public Oras() { }
+
         public Oras(string nume, int idOras = 0)
         {
             this.idOras = idOras;
             this.nume = nume;
         }
-
-        public Oras() { }
 
         public Oras(DataRow linieDB)
         {

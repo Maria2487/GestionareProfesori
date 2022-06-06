@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System.Collections.Generic;
+using System.Data;
 using LibrarieModele;
 
 
@@ -11,11 +7,13 @@ namespace NivelAccesDate
 {
     public interface IStocareMaterie : IStocareFactory
     {
-        List<Materie> GetMaterii();
-        Materie GetMaterie(int id);
         bool AddMaterie(Materie m);
-
         bool UpdateMaterie(Materie m);
         bool DeleteMaterie(Materie m);
+
+
+        Materie GetMaterie(int id);
+        List<Materie> GetMaterii();
+       
     }
 }

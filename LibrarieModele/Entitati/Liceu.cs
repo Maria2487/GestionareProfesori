@@ -13,14 +13,15 @@ namespace LibrarieModele
         public string nume { get; set; }
         public int IdOras { get; set; }
 
+
+        public Liceu() { }
+
         public Liceu(string nume, int idOras, int idLiceu = 0)
         {
             this.IdLiceu = idLiceu;
             this.nume = nume;
             this.IdOras = idOras;
         }
-
-        public Liceu() { }
 
         public Liceu(DataRow linieDB)
         {

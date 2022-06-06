@@ -50,7 +50,7 @@
             // 
             this.lblMaterie.AutoSize = true;
             this.lblMaterie.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMaterie.Location = new System.Drawing.Point(12, 229);
+            this.lblMaterie.Location = new System.Drawing.Point(12, 188);
             this.lblMaterie.Name = "lblMaterie";
             this.lblMaterie.Size = new System.Drawing.Size(94, 29);
             this.lblMaterie.TabIndex = 31;
@@ -60,7 +60,7 @@
             // 
             this.buttonSterge.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(142)))), ((int)(((byte)(136)))));
             this.buttonSterge.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSterge.Location = new System.Drawing.Point(698, 496);
+            this.buttonSterge.Location = new System.Drawing.Point(698, 449);
             this.buttonSterge.Name = "buttonSterge";
             this.buttonSterge.Size = new System.Drawing.Size(150, 30);
             this.buttonSterge.TabIndex = 30;
@@ -72,7 +72,7 @@
             // 
             this.buttonSalvare.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(142)))), ((int)(((byte)(136)))));
             this.buttonSalvare.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSalvare.Location = new System.Drawing.Point(698, 445);
+            this.buttonSalvare.Location = new System.Drawing.Point(698, 398);
             this.buttonSalvare.Name = "buttonSalvare";
             this.buttonSalvare.Size = new System.Drawing.Size(150, 30);
             this.buttonSalvare.TabIndex = 29;
@@ -84,7 +84,7 @@
             // 
             this.lblLiceu.AutoSize = true;
             this.lblLiceu.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLiceu.Location = new System.Drawing.Point(12, 72);
+            this.lblLiceu.Location = new System.Drawing.Point(12, 25);
             this.lblLiceu.Name = "lblLiceu";
             this.lblLiceu.Size = new System.Drawing.Size(71, 29);
             this.lblLiceu.TabIndex = 28;
@@ -94,7 +94,7 @@
             // 
             this.lblPrenume.AutoSize = true;
             this.lblPrenume.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrenume.Location = new System.Drawing.Point(12, 187);
+            this.lblPrenume.Location = new System.Drawing.Point(12, 146);
             this.lblPrenume.Name = "lblPrenume";
             this.lblPrenume.Size = new System.Drawing.Size(111, 29);
             this.lblPrenume.TabIndex = 26;
@@ -104,7 +104,7 @@
             // 
             this.lblNume.AutoSize = true;
             this.lblNume.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNume.Location = new System.Drawing.Point(12, 145);
+            this.lblNume.Location = new System.Drawing.Point(12, 104);
             this.lblNume.Name = "lblNume";
             this.lblNume.Size = new System.Drawing.Size(78, 29);
             this.lblNume.TabIndex = 25;
@@ -112,7 +112,7 @@
             // 
             // txtPrenume
             // 
-            this.txtPrenume.Location = new System.Drawing.Point(158, 196);
+            this.txtPrenume.Location = new System.Drawing.Point(158, 155);
             this.txtPrenume.Name = "txtPrenume";
             this.txtPrenume.ReadOnly = true;
             this.txtPrenume.Size = new System.Drawing.Size(297, 20);
@@ -120,7 +120,7 @@
             // 
             // txtNume
             // 
-            this.txtNume.Location = new System.Drawing.Point(158, 154);
+            this.txtNume.Location = new System.Drawing.Point(158, 113);
             this.txtNume.Name = "txtNume";
             this.txtNume.ReadOnly = true;
             this.txtNume.Size = new System.Drawing.Size(297, 20);
@@ -129,14 +129,14 @@
             // comboBoxLiceu
             // 
             this.comboBoxLiceu.FormattingEnabled = true;
-            this.comboBoxLiceu.Location = new System.Drawing.Point(158, 81);
+            this.comboBoxLiceu.Location = new System.Drawing.Point(158, 34);
             this.comboBoxLiceu.Name = "comboBoxLiceu";
             this.comboBoxLiceu.Size = new System.Drawing.Size(387, 21);
             this.comboBoxLiceu.TabIndex = 21;
             // 
             // txtMaterie
             // 
-            this.txtMaterie.Location = new System.Drawing.Point(158, 238);
+            this.txtMaterie.Location = new System.Drawing.Point(158, 197);
             this.txtMaterie.Name = "txtMaterie";
             this.txtMaterie.ReadOnly = true;
             this.txtMaterie.Size = new System.Drawing.Size(297, 20);
@@ -156,7 +156,7 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 280);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 233);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(667, 246);
             this.dataGridView1.TabIndex = 33;
@@ -166,7 +166,7 @@
             // 
             this.buttonResetare.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(142)))), ((int)(((byte)(136)))));
             this.buttonResetare.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonResetare.Location = new System.Drawing.Point(517, 190);
+            this.buttonResetare.Location = new System.Drawing.Point(529, 143);
             this.buttonResetare.Name = "buttonResetare";
             this.buttonResetare.Size = new System.Drawing.Size(150, 30);
             this.buttonResetare.TabIndex = 34;
@@ -178,7 +178,7 @@
             // 
             this.buttonCautaProfesor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(142)))), ((int)(((byte)(136)))));
             this.buttonCautaProfesor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCautaProfesor.Location = new System.Drawing.Point(517, 238);
+            this.buttonCautaProfesor.Location = new System.Drawing.Point(529, 191);
             this.buttonCautaProfesor.Name = "buttonCautaProfesor";
             this.buttonCautaProfesor.Size = new System.Drawing.Size(150, 30);
             this.buttonCautaProfesor.TabIndex = 35;
@@ -191,7 +191,7 @@
             this.labelInformatiiGrid.AutoSize = true;
             this.labelInformatiiGrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelInformatiiGrid.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(246)))), ((int)(((byte)(201)))));
-            this.labelInformatiiGrid.Location = new System.Drawing.Point(9, 529);
+            this.labelInformatiiGrid.Location = new System.Drawing.Point(9, 482);
             this.labelInformatiiGrid.Name = "labelInformatiiGrid";
             this.labelInformatiiGrid.Size = new System.Drawing.Size(386, 17);
             this.labelInformatiiGrid.TabIndex = 36;
@@ -202,7 +202,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(87)))), ((int)(((byte)(82)))));
-            this.ClientSize = new System.Drawing.Size(860, 554);
+            this.ClientSize = new System.Drawing.Size(860, 506);
             this.Controls.Add(this.labelInformatiiGrid);
             this.Controls.Add(this.buttonCautaProfesor);
             this.Controls.Add(this.buttonResetare);

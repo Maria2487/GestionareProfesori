@@ -1,9 +1,5 @@
 ﻿using LibrarieModele;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Oracle.DataAccess.Client;
 using System.Data;
 using System.Configuration;
@@ -14,15 +10,12 @@ namespace NivelAccesDate
     {
         private const int PRIMUL_TABEL = 0;
         private const int PRIMA_LINIE = 0;
-        private readonly string _NumeTabelLiceu = ConfigurationManager.AppSettings.Get("K_NumeTabelLiceu");
+
         private readonly string _NumeTabelMaterii = ConfigurationManager.AppSettings.Get("K_NumeTabelMaterii");
-        private readonly string _NumeTabelOras = ConfigurationManager.AppSettings.Get("K_NumeTabelOras");
         private readonly string _NumeTabelProfesor = ConfigurationManager.AppSettings.Get("K_NumeTabelProfesor");
-        private readonly string _NumeTabelRepartizare = ConfigurationManager.AppSettings.Get("K_NumeTabelRepartizare");
-        private readonly string _SecventaTabelLiceu = ConfigurationManager.AppSettings.Get("K_SecventaTabelLiceu");
-        private readonly string _SecventaTabelMaterie = ConfigurationManager.AppSettings.Get("K_SecventaTabelMaterie");
-        private readonly string _SecventaTabelOras = ConfigurationManager.AppSettings.Get("K_SecventaTabelOras");
         private readonly string _SecventaTabelProfesor = ConfigurationManager.AppSettings.Get("K_SecventaTabelProfesor");
+       
+        
         public bool AddProfesor(Profesor p)
         {
             return SqlDBHelper.ExecuteNonQuery(
@@ -31,6 +24,28 @@ namespace NivelAccesDate
                 new OracleParameter(":prenume", OracleDbType.NVarchar2, p.prenume, ParameterDirection.Input),
                 new OracleParameter(":idMaterie", OracleDbType.Int32, p.idMaterie, ParameterDirection.Input));
         }
+        public bool UpdateProfesor(Profesor p)
+        {
+            return SqlDBHelper.ExecuteNonQuery(
+                $"UPDATE {_NumeTabelProfesor} set nume = :nume, prenume = :prenume, idMaterie = :idMaterie where idProfesor = :idProfesor", CommandType.Text,
+                new OracleParameter(":nume", OracleDbType.NVarchar2, p.nume, ParameterDirection.Input),
+                new OracleParameter(":prenume", OracleDbType.NVarchar2, p.prenume, ParameterDirection.Input),
+                new OracleParameter(":idMaterie", OracleDbType.Int32, p.idMaterie, ParameterDirection.Input),
+                new OracleParameter(":idProfesor", OracleDbType.Int32, p.idProfesor, ParameterDirection.Input));
+        }
+        public bool DeleteProfesor(int p)
+        {
+            return SqlDBHelper.ExecuteNonQuery(
+                    $"DELETE FROM {_NumeTabelProfesor} WHERE idProfesor = :idProfesor", CommandType.Text,
+                    new OracleParameter(":idProfesor", OracleDbType.Int32, p, ParameterDirection.Input));
+        }
+        public bool DeleteProfesorDupaMaterie(int m)
+        {
+            return SqlDBHelper.ExecuteNonQuery(
+                    $"DELETE FROM {_NumeTabelProfesor} WHERE idMaterie = :idMaterie", CommandType.Text,
+                    new OracleParameter(":idMaterie", OracleDbType.Int32, m, ParameterDirection.Input));
+        }
+
 
         public Profesor GetProfesor(int id)
         {
@@ -45,7 +60,6 @@ namespace NivelAccesDate
             }
             return result;
         }
-
         public List<Profesor> GetProfesori()
         {
             var result = new List<Profesor>();
@@ -58,33 +72,13 @@ namespace NivelAccesDate
             return result;
         }
 
-        public bool UpdateProfesor(Profesor p)
-        {
-            return SqlDBHelper.ExecuteNonQuery(
-                $"UPDATE {_NumeTabelProfesor} set nume = :nume, prenume = :prenume, idMaterie = :idMaterie where idProfesor = :idProfesor", CommandType.Text,
-                new OracleParameter(":nume", OracleDbType.NVarchar2, p.nume, ParameterDirection.Input),
-                new OracleParameter(":prenume", OracleDbType.NVarchar2, p.prenume, ParameterDirection.Input),
-                new OracleParameter(":idMaterie", OracleDbType.Int32, p.idMaterie, ParameterDirection.Input),
-                new OracleParameter(":idProfesor", OracleDbType.Int32, p.idProfesor, ParameterDirection.Input));
-        }
 
-        public bool DeleteProfesor(int p)
-        {
-            return SqlDBHelper.ExecuteNonQuery(
-                    $"DELETE FROM {_NumeTabelProfesor} WHERE idProfesor = :idProfesor", CommandType.Text,
-                    new OracleParameter(":idProfesor", OracleDbType.Int32, p, ParameterDirection.Input));
-        }
-        public bool DeleteProfesorDupaMaterie(int m)
-        {
-            return SqlDBHelper.ExecuteNonQuery(
-                    $"DELETE FROM {_NumeTabelProfesor} WHERE idMaterie = :idMaterie", CommandType.Text,
-                    new OracleParameter(":idMaterie", OracleDbType.Int32, m, ParameterDirection.Input));
-        }
-
+        #region Pentru Afisari
         public DataSet GetDetaliiProfesori()
         {
             var dsPrograme = SqlDBHelper.ExecuteDataSet($"SELECT P.idProfesor, P.nume AS numeProfesor, P.prenume, M.idMaterie, M.nume AS numeMaterie FROM {_NumeTabelProfesor} P, {_NumeTabelMaterii} M WHERE P.idMaterie = M.idMaterie", CommandType.Text);
             return dsPrograme;
         }
+        #endregion
     }
 }

@@ -14,6 +14,9 @@ namespace LibrarieModele
         public string prenume { get; set; }
         public int idMaterie { get; set; }
 
+
+        public Profesor() { }
+
         public Profesor(string nume, string prenume, int idMaterie, int idProfesor = 0)
         {
             this.idProfesor = idProfesor;
@@ -21,8 +24,6 @@ namespace LibrarieModele
             this.prenume = prenume;
             this.idMaterie = idMaterie;
         }
-
-        public Profesor() { }
 
         public Profesor(DataRow linieDB)
         {

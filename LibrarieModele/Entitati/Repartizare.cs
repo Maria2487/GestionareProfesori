@@ -12,13 +12,14 @@ namespace LibrarieModele
         public int idProfesor { get; set; }
         public int idLiceu { get; set; }
 
+
+        public Repartizare() { }
+
         public Repartizare(int idProfesor, int idLiceu)
         {
             this.idProfesor = idProfesor;
             this.idLiceu = idLiceu;
         }
-
-        public Repartizare() { }
 
         public Repartizare(DataRow linieDB)
         {

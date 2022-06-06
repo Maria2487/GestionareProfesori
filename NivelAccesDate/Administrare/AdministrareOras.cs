@@ -1,9 +1,5 @@
 ﻿using LibrarieModele;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Oracle.DataAccess.Client;
 using System.Data;
 using System.Configuration;
@@ -14,22 +10,32 @@ namespace NivelAccesDate
     {
         private const int PRIMUL_TABEL = 0;
         private const int PRIMA_LINIE = 0;
-        private readonly string _NumeTabelLiceu = ConfigurationManager.AppSettings.Get("K_NumeTabelLiceu");
-        private readonly string _NumeTabelMaterii = ConfigurationManager.AppSettings.Get("K_NumeTabelMaterii");
+
         private readonly string _NumeTabelOras = ConfigurationManager.AppSettings.Get("K_NumeTabelOras");
-        private readonly string _NumeTabelProfesor = ConfigurationManager.AppSettings.Get("K_NumeTabelProfesor");
-        private readonly string _NumeTabelRepartizare = ConfigurationManager.AppSettings.Get("K_NumeTabelRepartizare");
-        private readonly string _SecventaTabelLiceu = ConfigurationManager.AppSettings.Get("K_SecventaTabelLiceu");
-        private readonly string _SecventaTabelMaterie = ConfigurationManager.AppSettings.Get("K_SecventaTabelMaterie");
         private readonly string _SecventaTabelOras = ConfigurationManager.AppSettings.Get("K_SecventaTabelOras");
-        private readonly string _SecventaTabelProfesor = ConfigurationManager.AppSettings.Get("K_SecventaTabelProfesor");
+
+
         public bool AddOras(Oras o)
         {
             return SqlDBHelper.ExecuteNonQuery(
                 $"INSERT INTO {_NumeTabelOras} VALUES ({_SecventaTabelOras}.nextval, :nume)", CommandType.Text,
                 new OracleParameter(":nume", OracleDbType.NVarchar2, o.nume, ParameterDirection.Input));
         }
-
+        public bool UpdateOras(Oras o)
+        {
+            return SqlDBHelper.ExecuteNonQuery(
+                $"UPDATE {_NumeTabelOras} set nume = :nume where idOras = :idOras", CommandType.Text,
+                new OracleParameter(":nume", OracleDbType.NVarchar2, o.nume, ParameterDirection.Input),
+                new OracleParameter(":idOras", OracleDbType.NVarchar2, o.idOras, ParameterDirection.Input));
+        }
+        public bool DeleteOras(Oras o)
+        {
+            return SqlDBHelper.ExecuteNonQuery(
+                    $"DELETE FROM {_NumeTabelOras} WHERE idOras = :idOras", CommandType.Text,
+                    new OracleParameter(":idOras", OracleDbType.Int32, o.idOras, ParameterDirection.Input));
+        }
+       
+        
         public Oras GetOras(int id)
         {
             Oras result = null;
@@ -43,7 +49,6 @@ namespace NivelAccesDate
             }
             return result;
         }
-
         public List<Oras> GetOrase()
         {
             var result = new List<Oras>();
@@ -56,19 +61,5 @@ namespace NivelAccesDate
             return result;
         }
 
-        public bool UpdateOras(Oras o)
-        {
-            return SqlDBHelper.ExecuteNonQuery(
-                $"UPDATE {_NumeTabelOras} set nume = :nume where idOras = :idOras", CommandType.Text,
-                new OracleParameter(":nume", OracleDbType.NVarchar2, o.nume, ParameterDirection.Input),
-                new OracleParameter(":idOras", OracleDbType.NVarchar2, o.idOras, ParameterDirection.Input));
-        }
-
-        public bool DeleteOras(Oras o)
-        {
-            return SqlDBHelper.ExecuteNonQuery(
-                    $"DELETE FROM {_NumeTabelOras} WHERE idOras = :idOras", CommandType.Text,
-                    new OracleParameter(":idOras", OracleDbType.Int32, o.idOras, ParameterDirection.Input));
-        }
     }
 }

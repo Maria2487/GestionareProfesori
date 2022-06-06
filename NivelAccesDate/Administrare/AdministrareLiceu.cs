@@ -1,12 +1,8 @@
 ﻿using LibrarieModele;
 using Oracle.DataAccess.Client;
-using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NivelAccesDate
 {
@@ -14,15 +10,10 @@ namespace NivelAccesDate
     {
         private const int PRIMUL_TABEL = 0;
         private const int PRIMA_LINIE = 0;
+
         private readonly string _NumeTabelLiceu = ConfigurationManager.AppSettings.Get("K_NumeTabelLiceu");
-        private readonly string _NumeTabelMaterii = ConfigurationManager.AppSettings.Get("K_NumeTabelMaterii");
         private readonly string _NumeTabelOras = ConfigurationManager.AppSettings.Get("K_NumeTabelOras");
-        private readonly string _NumeTabelProfesor = ConfigurationManager.AppSettings.Get("K_NumeTabelProfesor");
-        private readonly string _NumeTabelRepartizare = ConfigurationManager.AppSettings.Get("K_NumeTabelRepartizare");
         private readonly string _SecventaTabelLiceu = ConfigurationManager.AppSettings.Get("K_SecventaTabelLiceu");
-        private readonly string _SecventaTabelMaterie = ConfigurationManager.AppSettings.Get("K_SecventaTabelMaterie");
-        private readonly string _SecventaTabelOras = ConfigurationManager.AppSettings.Get("K_SecventaTabelOras");
-        private readonly string _SecventaTabelProfesor = ConfigurationManager.AppSettings.Get("K_SecventaTabelProfesor");
 
 
         public bool AddLiceu(Liceu l)
@@ -32,18 +23,22 @@ namespace NivelAccesDate
                  new OracleParameter(":nume", OracleDbType.Varchar2, l.nume, ParameterDirection.Input),
                  new OracleParameter(":idOras", OracleDbType.Int32, l.IdOras, ParameterDirection.Input));
         }
-
-        public List<Liceu> GetLicee()
+        public bool UpdateLiceu(Liceu l)
         {
-            var result = new List<Liceu>();
-            var dsLicee = SqlDBHelper.ExecuteDataSet($"select * from {_NumeTabelLiceu}", CommandType.Text);
-
-            foreach (DataRow linieDB in dsLicee.Tables[PRIMUL_TABEL].Rows)
-            {
-                result.Add(new Liceu(linieDB));
-            }
-            return result;
+            return SqlDBHelper.ExecuteNonQuery(
+                $"UPDATE {_NumeTabelLiceu} set nume = :nume, idOras = :idOras where idLiceu = :idLiceu", CommandType.Text,
+                 new OracleParameter(":nume", OracleDbType.Varchar2, l.nume, ParameterDirection.Input),
+                 new OracleParameter(":idOras", OracleDbType.Int32, l.IdOras, ParameterDirection.Input),
+                 new OracleParameter(":idLiceu", OracleDbType.Int32, l.IdLiceu, ParameterDirection.Input)
+                 );
         }
+        public bool DeleteLiceu(int l)
+        {
+            return SqlDBHelper.ExecuteNonQuery(
+                    $"DELETE FROM {_NumeTabelLiceu} WHERE idLiceu = :idLiceu", CommandType.Text,
+                    new OracleParameter(":idLiceu", OracleDbType.Int32, l, ParameterDirection.Input));
+        }
+
 
         public Liceu GetLiceu(int id)
         {
@@ -58,24 +53,20 @@ namespace NivelAccesDate
             }
             return result;
         }
-
-        public bool UpdateLiceu(Liceu l)
+        public List<Liceu> GetLicee()
         {
-            return SqlDBHelper.ExecuteNonQuery(
-                $"UPDATE {_NumeTabelLiceu} set nume = :nume, idOras = :idOras where idLiceu = :idLiceu", CommandType.Text,
-                 new OracleParameter(":nume", OracleDbType.Varchar2, l.nume, ParameterDirection.Input),
-                 new OracleParameter(":idOras", OracleDbType.Int32, l.IdOras, ParameterDirection.Input),
-                 new OracleParameter(":idLiceu", OracleDbType.Int32, l.IdLiceu, ParameterDirection.Input)
-                 );
+            var result = new List<Liceu>();
+            var dsLicee = SqlDBHelper.ExecuteDataSet($"select * from {_NumeTabelLiceu}", CommandType.Text);
+
+            foreach (DataRow linieDB in dsLicee.Tables[PRIMUL_TABEL].Rows)
+            {
+                result.Add(new Liceu(linieDB));
+            }
+            return result;
         }
 
-        public bool DeleteLiceu( int l)
-        {
-            return SqlDBHelper.ExecuteNonQuery(
-                    $"DELETE FROM {_NumeTabelLiceu} WHERE idLiceu = :idLiceu", CommandType.Text,
-                    new OracleParameter(":idLiceu", OracleDbType.Int32, l, ParameterDirection.Input));
-        }
 
+        #region Pentru Afisari
         public DataSet GetDetaliiLicee()
         {
             var dsPrograme = SqlDBHelper.ExecuteDataSet($"SELECT L.idLiceu, L.nume AS numeLiceu, O.idOras, O.nume AS numeOras FROM {_NumeTabelLiceu} L, {_NumeTabelOras} O WHERE L.idLiceu = idLiceu AND O.idOras = L.idOras", CommandType.Text);
@@ -98,6 +89,7 @@ namespace NivelAccesDate
                                                         $"WHERE O.idOras = L.idOras AND L.nume like '%{str}%'", CommandType.Text);
             return dsPrograme;
         }
+        #endregion
     }
 }
 

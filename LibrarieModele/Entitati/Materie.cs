@@ -12,12 +12,14 @@ namespace LibrarieModele
         public int idMaterie { get; set; }
         public string nume { get; set; }
 
+
+        public Materie() { }
+
         public Materie(string nume, int idMaterie = 0)
         {
             this.idMaterie = idMaterie;
             this.nume = nume;
         }
-        public Materie() { }
 
         public Materie(DataRow linieDB)
         {
